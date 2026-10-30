@@ -17,7 +17,7 @@ const INVALID_REQUEST: i64 = -32600;
 const METHOD_NOT_FOUND: i64 = -32601;
 const INVALID_PARAMS: i64 = -32602;
 
-const INSTRUCTIONS: &str = "BIMCraft is a BIM modeler, a Revit-class building model. Lengths are millimetres; x east, y north, z up; \
+const INSTRUCTIONS: &str = "3DCADius is a BIM modeler (based on BIMCraft), a Revit-class building model. Lengths are millimetres; x east, y north, z up; \
 the model starts with Level 1 (0) and Level 2 (3000). Model with execute: wall {points: [[0,0],[8000,0],[8000,6000],[0,6000]], \
 closed: true}, door {at: [2000, 0]}, window {at: [8000, 3000]}, room {point: [4000, 3000], name: \"Living\"}, floor {} (open \
 over a loop of walls standing free inside), \
@@ -182,7 +182,7 @@ impl Server {
                 Ok(json!({
                     "protocolVersion": version,
                     "capabilities": {"tools": {"listChanged": false}},
-                    "serverInfo": {"name": "bimcraft", "title": "BIMCraft", "version": env!("CARGO_PKG_VERSION")},
+                    "serverInfo": {"name": "bimcraft", "title": "3DCADius", "version": env!("CARGO_PKG_VERSION")},
                     "instructions": match self.backend {
                         Backend::Own(_) => INSTRUCTIONS.to_string(),
                         Backend::Window(_) => format!("{INSTRUCTIONS} You are attached to the window the user has open: what you make is in their project, to see and to undo. new_model and open are not available; the user starts and opens projects in the window."),

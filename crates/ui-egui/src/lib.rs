@@ -1287,7 +1287,7 @@ impl BimApp {
         self.dialog_answered();
         self.watch_window(&ctx);
         let view = self.view_title(self.sheet);
-        let title = format!("{}{} · {view} · BIMCraft", self.session.model.name, if self.dirty() { "*" } else { "" });
+        let title = format!("{}{} · {view} · 3DCADius", self.session.model.name, if self.dirty() { "*" } else { "" });
         if title != self.title {
             ctx.send_viewport_cmd(ViewportCommand::Title(title.clone()));
             self.title = title;
@@ -1389,7 +1389,7 @@ impl BimApp {
             ui.painter().text(
                 bar.left_center() + vec2(14.0, 0.0),
                 Align2::LEFT_CENTER,
-                "BIMCraft",
+                "3DCADius",
                 FontId::proportional(12.5),
                 pal().app_bar_muted,
             );
@@ -2485,7 +2485,7 @@ impl BimApp {
 
     fn save_as(&mut self, ctx: &Context, then: Option<Pending>) {
         let later = ctx.clone();
-        self.ask_path(ctx, msg!("BIMCraft project"), "bimcraft", move |app, p| {
+        self.ask_path(ctx, msg!("3DCADius project"), "bimcraft", move |app, p| {
             if app.save_to(&p)
                 && let Some(then) = then
             {
@@ -2615,7 +2615,7 @@ impl BimApp {
             }
             Pending::Open => {
                 let revit = self.revit.is_some();
-                let name = t(if revit { msg!("BIMCraft project, IFC or Revit") } else { "BIMCraft project or IFC" });
+                let name = t(if revit { msg!("3DCADius project, IFC or Revit") } else { "3DCADius project or IFC" });
                 let dialog = rfd::AsyncFileDialog::new().add_filter(name, &revit::open_extensions(revit));
                 self.ask_file(ctx, dialog, false, |app, path| {
                     app.open_path(&path);
@@ -3398,7 +3398,7 @@ impl BimApp {
     fn insert_tab(&mut self, ui: &mut Ui) {
         panel(ui, msg!("Link"), |ui| {
             let tip = msg!(
-                "Link Model (LK): another project, a BIMCraft file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
+                "Link Model (LK): another project, a 3DCADius file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
             );
             if big_button(ui, Icon::Link, "Link Model", false, tip).clicked() {
                 self.link_dialog = true;
@@ -3520,7 +3520,7 @@ impl BimApp {
             });
         });
         panel(ui, msg!("Links"), |ui| {
-            let tip = "Link Model (LK): another project, a BIMCraft file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to";
+            let tip = "Link Model (LK): another project, a 3DCADius file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to";
             if big_button(ui, Icon::Link, "Link Model", false, tip).clicked() {
                 self.link_dialog = true;
             }
@@ -3723,9 +3723,9 @@ impl BimApp {
         // Placing a component: Revit's Mode panel, which loads a family from a file.
         if matches!(self.tool, Tool::Component | Tool::Fixture(_)) {
             panel(ui, msg!("Mode"), |ui| {
-                let tip = msg!("Load Family: a family saved as a .json file, BIMCraft's own");
+                let tip = msg!("Load Family: a family saved as a .json file, 3DCADius's own");
                 if big_button(ui, Icon::LoadFamily, "Load Family", false, tip).clicked() {
-                    let dialog = rfd::AsyncFileDialog::new().add_filter(t("BIMCraft family"), &["json"]);
+                    let dialog = rfd::AsyncFileDialog::new().add_filter(t("3DCADius family"), &["json"]);
                     self.ask_file(ui.ctx(), dialog, false, |app, path| {
                         if let Some(r) = app.run("family", json!({"path": path.to_string_lossy()})) {
                             let name = r["name"].as_str().unwrap_or_default().to_string();

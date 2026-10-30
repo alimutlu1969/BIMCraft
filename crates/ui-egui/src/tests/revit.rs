@@ -85,7 +85,7 @@ fn a_build_without_the_reader_offers_no_revit_files_and_says_why_when_given_one(
     let model = Arc::clone(&h.state().session.model);
     assert!(!h.state_mut().open_path(Path::new("/nowhere/house.rvt")));
     let status = h.state().status.clone();
-    assert!(status.error && status.text.starts_with("house.rvt: this build of BIMCraft was made without Revit support"), "{status:?}");
+    assert!(status.error && status.text.starts_with("house.rvt: this build of 3DCADius was made without Revit support"), "{status:?}");
     assert!(Arc::ptr_eq(&model, &h.state().session.model), "the project is as it was");
 }
 

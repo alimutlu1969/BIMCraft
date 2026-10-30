@@ -11,7 +11,7 @@ use crate::lang::t;
 impl BimApp {
     /// Link Model (LK): the file the user picks.
     pub(crate) fn link_model_dialog(&mut self, ctx: &Context) {
-        let dialog = rfd::AsyncFileDialog::new().add_filter(t("BIMCraft project or IFC"), &["bimcraft", "ifc"]);
+        let dialog = rfd::AsyncFileDialog::new().add_filter(t("3DCADius project or IFC"), &["bimcraft", "ifc"]);
         self.ask_file(ctx, dialog, false, |app, path| app.link_path(&path));
     }
 

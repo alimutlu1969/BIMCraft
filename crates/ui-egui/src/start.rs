@@ -24,7 +24,7 @@ use crate::style::{self, pal};
 use crate::{BimApp, Pending};
 
 /// Where the source code is.
-pub const SOURCE: &str = "https://github.com/IPedrax/BIMCraft";
+pub const SOURCE: &str = "https://github.com/alimutlu1969/BIMCraft";
 /// A tile's picture, px (drawn at twice that, for sharp screens).
 const THUMB: [u32; 2] = [232, 136];
 /// A project file bigger than this gets no picture: drawing one would hold the thread too long.
@@ -288,7 +288,7 @@ impl BimApp {
             ui.add_space(14.0);
             ui.vertical(|ui| {
                 ui.add_space(4.0);
-                ui.label(RichText::new("BIMCraft").font(FontId::proportional(34.0)).strong().color(pal().text));
+                ui.label(RichText::new("3DCADius").font(FontId::proportional(34.0)).strong().color(pal().text));
                 ui.label(RichText::new(t("Building information modelling, open and free.")).size(15.0).color(pal().muted));
             });
         });
@@ -303,9 +303,9 @@ impl BimApp {
         }
         ui.add_space(10.0);
         let what = if self.revit.is_some() {
-            msg!("A BIMCraft project, an IFC or a Revit file.")
+            msg!("A 3DCADius project, an IFC or a Revit file.")
         } else {
-            msg!("A BIMCraft project or an IFC file.")
+            msg!("A 3DCADius project or an IFC file.")
         };
         if action(ui, Icon::Open, "Open…", what, &format!("{cmd}O")).clicked() {
             *click = Some(Click::Open);
@@ -458,17 +458,17 @@ impl BimApp {
                 } else if ui.button(t("Download")).clicked() {
                     *click = Some(Click::Page(release.page.clone()));
                 }
-                pill(ui, &tf("BIMCraft {} is available", &[&version]), pal().accent);
+                pill(ui, &tf("3DCADius {} is available", &[&version]), pal().accent);
             }
             State::Downloading { release, .. } => {
                 ui.spinner();
-                ui.label(tf("Downloading BIMCraft {}…", &[&release.version.to_string()]));
+                ui.label(tf("Downloading 3DCADius {}…", &[&release.version.to_string()]));
             }
             State::Ready { release, .. } => {
                 if ui.button(RichText::new(t("Restart and install")).strong()).clicked() {
                     *click = Some(Click::Restart);
                 }
-                pill(ui, &tf("BIMCraft {} is ready to install", &[&release.version.to_string()]), pal().accent);
+                pill(ui, &tf("3DCADius {} is ready to install", &[&release.version.to_string()]), pal().accent);
             }
             State::Installing { .. } => {
                 ui.spinner();
@@ -478,7 +478,7 @@ impl BimApp {
                 ui.label(RichText::new(t("Checking for updates…")).color(pal().muted));
             }
             State::Idle if u.up_to_date() => {
-                ui.label(RichText::new(tf("BIMCraft {} is up to date", &[&current])).color(pal().muted));
+                ui.label(RichText::new(tf("3DCADius {} is up to date", &[&current])).color(pal().muted));
                 let (rect, _) = ui.allocate_exact_size(vec2(16.0, 16.0), Sense::hover());
                 icons::paint(ui.painter(), Icon::Check, rect, pal().context);
             }

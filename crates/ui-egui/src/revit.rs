@@ -133,7 +133,7 @@ impl BimApp {
         let file = file_name(path);
         let Some(reader) = self.revit.clone() else {
             let template = msg!(
-                "{}: this build of BIMCraft was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
+                "{}: this build of 3DCADius was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
             );
             self.status = Status { text: tf(template, &[&file]), error: true };
             return false;

@@ -5449,7 +5449,7 @@ mod updates {
         }
     }
 
-    const OFFER: &str = "BIMCraft 0.5.0 is available. You have 0.4.0.";
+    const OFFER: &str = "3DCADius 0.5.0 is available. You have 0.4.0.";
 
     #[test]
     fn a_window_without_an_updater_shows_none_of_it() {
@@ -5495,7 +5495,7 @@ mod updates {
         let mut r = rig("v0.5.0", true);
         r.start();
         press(&mut r.h, "Update now");
-        assert!(r.h.query_by_label("BIMCraft 0.5.0 is ready. It will close, update and start again.").is_some());
+        assert!(r.h.query_by_label("3DCADius 0.5.0 is ready. It will close, update and start again.").is_some());
         assert!(r.h.query_by_label("Update now").is_none() && r.handed.lock().unwrap().is_empty(), "nothing is installed yet");
         assert!(!r.h.state().closing);
         press(&mut r.h, "Restart and install");
@@ -5528,7 +5528,7 @@ mod updates {
         click_at(&mut r.h, save.unwrap());
         assert!(!r.h.state().dirty(), "saved");
         let handed = r.handed.lock().unwrap().clone();
-        assert_eq!(handed[0].1.as_deref(), Some(project.as_path()), "the project is opened again when BIMCraft starts");
+        assert_eq!(handed[0].1.as_deref(), Some(project.as_path()), "the project is opened again when 3DCADius starts");
         assert!(r.h.state().closing);
     }
 
@@ -5542,7 +5542,7 @@ mod updates {
         let status = r.h.state().status.clone();
         assert!(status.error && status.text == "Couldn't install the update: no room", "{status:?}");
         assert!(!r.h.state().closing, "the window stays, with the project in it");
-        assert!(r.h.query_by_label("Restart and install").is_some() && r.h.query_by_label("Installing BIMCraft 0.5.0…").is_none());
+        assert!(r.h.query_by_label("Restart and install").is_some() && r.h.query_by_label("Installing 3DCADius 0.5.0…").is_none());
         r.failing.store(false, Ordering::SeqCst);
         press(&mut r.h, "Restart and install");
         assert!(r.h.state().closing && r.handed.lock().unwrap().len() == 2, "the second try went through");
@@ -5587,7 +5587,7 @@ mod updates {
         r.h.step();
         r.h.step();
         assert!(r.h.state().installing());
-        assert!(r.h.query_by_label("Installing BIMCraft 0.5.0…").is_some(), "the box says what is going on");
+        assert!(r.h.query_by_label("Installing 3DCADius 0.5.0…").is_some(), "the box says what is going on");
         assert!(r.h.query_by_label("Restart and install").is_none(), "and the banner gives way to it");
         assert_eq!(r.h.state().view_rect, bare, "leaving no empty strip of it over the views");
         // Nothing can start or change under it: a new project, an undo, the system asking to quit or to open a file, or the window's
@@ -5674,7 +5674,7 @@ mod updates {
     fn the_file_menu_checks_by_hand_and_switches_the_startup_check() {
         let mut r = rig("v0.4.0", true);
         r.menu("Check for Updates Now");
-        assert_eq!(r.h.state().status.text, "BIMCraft 0.4.0 is up to date.");
+        assert_eq!(r.h.state().status.text, "3DCADius 0.4.0 is up to date.");
         assert!(!r.h.state().status.error);
         assert!(r.h.query_by_label(OFFER).is_none());
         // Off, and it stays off for the next run.
@@ -5733,18 +5733,18 @@ mod updates {
         let cases = [
             (
                 Lang::Portuguese,
-                "O BIMCraft 0.5.0 está disponível. Você tem a versão 0.4.0.",
+                "O 3DCADius 0.5.0 está disponível. Você tem a versão 0.4.0.",
                 ["Atualizar agora", "Depois", "Ignorar esta versão", "O que há de novo"],
                 ["Verificar atualizações ao iniciar", "Verificar atualizações agora"],
-                "O BIMCraft 0.5.0 está pronto. Ele vai fechar, atualizar e abrir de novo.",
+                "O 3DCADius 0.5.0 está pronto. Ele vai fechar, atualizar e abrir de novo.",
                 "Reiniciar e instalar",
             ),
             (
                 Lang::Spanish,
-                "BIMCraft 0.5.0 está disponible. Tienes la versión 0.4.0.",
+                "3DCADius 0.5.0 está disponible. Tienes la versión 0.4.0.",
                 ["Actualizar ahora", "Más tarde", "Omitir esta versión", "Novedades"],
                 ["Buscar actualizaciones al iniciar", "Buscar actualizaciones ahora"],
-                "BIMCraft 0.5.0 está listo. Se cerrará, se actualizará y se abrirá de nuevo.",
+                "3DCADius 0.5.0 está listo. Se cerrará, se actualizará y se abrirá de nuevo.",
                 "Reiniciar e instalar",
             ),
         ];
@@ -5766,26 +5766,26 @@ mod updates {
         }
         // Every word the updater's windows use is in the table in both languages, however it got there.
         let words = [
-            "BIMCraft {} is available. You have {}.",
+            "3DCADius {} is available. You have {}.",
             "Update now",
             "Download",
             "Later",
             "Skip this version",
             "What's new",
-            "Downloading BIMCraft {}…",
-            "BIMCraft {} is ready. It will close, update and start again.",
+            "Downloading 3DCADius {}…",
+            "3DCADius {} is ready. It will close, update and start again.",
             "Restart and install",
             "Check for updates at startup",
             "Check for Updates Now",
-            "BIMCraft {} is up to date.",
+            "3DCADius {} is up to date.",
             "Couldn't check for updates: {}",
             "Couldn't download the update: {}",
             "Couldn't install the update: {}",
-            "Installing BIMCraft {}…",
+            "Installing 3DCADius {}…",
             "Couldn't save the setting: {}",
-            "Downloads and checks the update; BIMCraft then closes, updates and starts again.",
+            "Downloads and checks the update; 3DCADius then closes, updates and starts again.",
             "Opens the release page on GitHub. This copy can't update itself.",
-            "Asks to save first if there are unsaved changes, then closes BIMCraft, installs the update and starts it again.",
+            "Asks to save first if there are unsaved changes, then closes 3DCADius, installs the update and starts it again.",
         ];
         for language in [Lang::Portuguese, Lang::Spanish] {
             for word in words {

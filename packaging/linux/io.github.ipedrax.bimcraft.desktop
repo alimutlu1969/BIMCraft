@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=BIMCraft
+Name=3DCADius
 GenericName=Building Information Modeling
 Comment=Model buildings: walls, floors, roofs, rooms, sheets and schedules; open and save IFC
 Exec=bimcraft %F

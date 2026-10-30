@@ -1,4 +1,4 @@
-//! `bimcraft`: the BIMCraft desktop app.
+//! `bimcraft`: the 3DCADius desktop app (based on BIMCraft).
 
 // A release build on Windows is a window, not a console program: no console opens behind it.
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
@@ -154,7 +154,7 @@ fn main() -> ExitCode {
     // keeps its own.
     app.own_title_bar = !cfg!(target_os = "macos");
     let mut viewport = eframe::egui::ViewportBuilder::default()
-        .with_title("BIMCraft")
+        .with_title("3DCADius")
         .with_decorations(!app.own_title_bar || app.system_title_bar)
         .with_app_id(APP_ID)
         .with_inner_size(window.size.unwrap_or([1440.0, 900.0]))
@@ -201,7 +201,7 @@ fn main() -> ExitCode {
         }
         Ok(Box::new(app))
     };
-    match eframe::run_native("BIMCraft", options, Box::new(start)) {
+    match eframe::run_native("3DCADius", options, Box::new(start)) {
         Ok(()) => {
             startup::closed(files.as_ref(), graphics);
             ExitCode::SUCCESS

@@ -121,10 +121,10 @@ fn the_footer_says_whether_an_update_is_out() {
     h.run();
     h.get_by_label("Check for updates").click();
     h.run();
-    h.get_by_label("BIMCraft 0.5.0 is available");
+    h.get_by_label("3DCADius 0.5.0 is available");
     h.get_by_label("Download");
     h.state_mut().updates = Some(offer("v0.4.0"));
     h.state_mut().updates.as_mut().unwrap().check_now();
     h.run();
-    h.get_by_label("BIMCraft 0.4.0 is up to date");
+    h.get_by_label("3DCADius 0.4.0 is up to date");
 }

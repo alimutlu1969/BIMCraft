@@ -42,7 +42,7 @@ impl BimApp {
         let current = updates.current().to_string();
         self.status = match note {
             None => return,
-            Some(Note::UpToDate) => Status { text: tf("BIMCraft {} is up to date.", &[&current]), error: false },
+            Some(Note::UpToDate) => Status { text: tf("3DCADius {} is up to date.", &[&current]), error: false },
             Some(Note::CheckFailed(e)) => failed(tf("Couldn't check for updates: {}", &[&e])),
             Some(Note::DownloadFailed(e)) => failed(tf("Couldn't download the update: {}", &[&e])),
             Some(Note::InstallFailed(e)) => failed(tf("Couldn't install the update: {}", &[&e])),
@@ -68,7 +68,7 @@ impl BimApp {
     /// The box over the window while an update is put in place: nothing under it can be touched, because the window closes when it's in.
     pub(crate) fn installing_box(&self, ctx: &Context) {
         let Some(State::Installing { release, .. }) = self.updates.as_ref().map(|u| u.state()) else { return };
-        let text = tf("Installing BIMCraft {}…", &[&release.version.to_string()]);
+        let text = tf("Installing 3DCADius {}…", &[&release.version.to_string()]);
         Modal::new(Id::new("installing"), t("Updates")).width(580.0).closable(false).show(ctx, |ui| {
             crate::popup::body(ui, |ui| {
                 ui.horizontal(|ui| {
@@ -91,10 +91,10 @@ impl BimApp {
                 State::Idle | State::Installing { .. } => {}
                 State::Available(release) => {
                     ui.label(
-                        RichText::new(tf("BIMCraft {} is available. You have {}.", &[&release.version.to_string(), &current])).strong(),
+                        RichText::new(tf("3DCADius {} is available. You have {}.", &[&release.version.to_string(), &current])).strong(),
                     );
                     if release.installer.is_some() {
-                        if primary(ui, "Update now", msg!("Downloads and checks the update; BIMCraft then closes, updates and starts again.")) {
+                        if primary(ui, "Update now", msg!("Downloads and checks the update; 3DCADius then closes, updates and starts again.")) {
                             click = Some(Click::Update);
                         }
                     } else if primary(ui, "Download", msg!("Opens the release page on GitHub. This copy can't update itself.")) {
@@ -111,7 +111,7 @@ impl BimApp {
                     }
                 }
                 State::Downloading { release, done } => {
-                    ui.label(tf("Downloading BIMCraft {}…", &[&release.version.to_string()]));
+                    ui.label(tf("Downloading 3DCADius {}…", &[&release.version.to_string()]));
                     let size = release.installer.as_ref().map_or(1, |i| i.size).max(1);
                     let fraction = (done.load(Ordering::Relaxed) as f32 / size as f32).clamp(0.0, 1.0);
                     ui.add(ProgressBar::new(fraction).desired_width(220.0).fill(pal().accent));
@@ -119,13 +119,13 @@ impl BimApp {
                 }
                 State::Ready { release, .. } => {
                     ui.label(
-                        RichText::new(tf("BIMCraft {} is ready. It will close, update and start again.", &[&release.version.to_string()]))
+                        RichText::new(tf("3DCADius {} is ready. It will close, update and start again.", &[&release.version.to_string()]))
                             .strong(),
                     );
                     if primary(
                         ui,
                         "Restart and install",
-                        msg!("Asks to save first if there are unsaved changes, then closes BIMCraft, installs the update and starts it again."),
+                        msg!("Asks to save first if there are unsaved changes, then closes 3DCADius, installs the update and starts it again."),
                     ) {
                         click = Some(Click::Restart);
                     }

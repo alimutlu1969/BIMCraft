@@ -146,7 +146,7 @@ pub fn tell(language: Lang, what: &str, files: Option<&Files>) {
     if cfg!(windows) {
         rfd::MessageDialog::new()
             .set_level(rfd::MessageLevel::Error)
-            .set_title(word(ui_msg!("BIMCraft couldn't start")))
+            .set_title(word(ui_msg!("3DCADius couldn't start")))
             .set_description(body)
             .show();
     }

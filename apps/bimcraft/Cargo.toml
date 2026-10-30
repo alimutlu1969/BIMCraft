@@ -1,6 +1,6 @@
 [package]
 name = "bimcraft"
-description = "BIMCraft desktop app"
+description = "3DCADius desktop app"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

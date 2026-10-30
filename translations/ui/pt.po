@@ -1,7 +1,7 @@
-# BIMCraft ui translations.
+# 3DCADius ui translations.
 # SPDX-License-Identifier: MIT OR Apache-2.0
 msgid ""
-msgstr "Project-Id-Version: BIMCraft\nLanguage: pt\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: 3DCADius\nLanguage: pt\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
 
 #: crates/ui-egui/src/lib.rs:394
 msgid " Left out: {}{}."
@@ -77,12 +77,12 @@ msgid "<Pick>"
 msgstr "<Escolher>"
 
 #: crates/ui-egui/src/start.rs:308
-msgid "A BIMCraft project or an IFC file."
-msgstr "Um projeto BIMCraft ou um arquivo IFC."
+msgid "A 3DCADius project or an IFC file."
+msgstr "Um projeto 3DCADius ou um arquivo IFC."
 
 #: crates/ui-egui/src/start.rs:306
-msgid "A BIMCraft project, an IFC or a Revit file."
-msgstr "Um projeto BIMCraft, um arquivo IFC ou do Revit."
+msgid "A 3DCADius project, an IFC or a Revit file."
+msgstr "Um projeto 3DCADius, um arquivo IFC ou do Revit."
 
 #: crates/ui-egui/src/editor.rs:679
 msgid "A blank value is the family's own, as the Parameters tab has it."
@@ -506,8 +506,8 @@ msgid "Ascending"
 msgstr "Crescente"
 
 #: crates/ui-egui/src/updates.rs:128
-msgid "Asks to save first if there are unsaved changes, then closes BIMCraft, installs the update and starts it again."
-msgstr "Pergunta se quer salvar, se houver alterações não salvas; depois fecha o BIMCraft, instala a atualização e o abre de novo."
+msgid "Asks to save first if there are unsaved changes, then closes 3DCADius, installs the update and starts it again."
+msgstr "Pergunta se quer salvar, se houver alterações não salvas; depois fecha o 3DCADius, instala a atualização e o abre de novo."
 
 #: crates/ui-egui/src/properties.rs:377
 msgid "Associated Level"
@@ -576,50 +576,50 @@ msgid "Azimuth (°)"
 msgstr "Azimute (°)"
 
 #: apps/bimcraft/src/startup.rs:149
-msgid "BIMCraft couldn't start"
-msgstr "O BIMCraft não conseguiu iniciar"
+msgid "3DCADius couldn't start"
+msgstr "O 3DCADius não conseguiu iniciar"
 
 #: crates/ui-egui/src/editor.rs:1027
 #: crates/ui-egui/src/editor.rs:1057
 #: crates/ui-egui/src/lib.rs:3728
-msgid "BIMCraft family"
-msgstr "Família do BIMCraft"
+msgid "3DCADius family"
+msgstr "Família do 3DCADius"
 
 #: crates/ui-egui/src/lib.rs:2488
-msgid "BIMCraft project"
-msgstr "Projeto BIMCraft"
+msgid "3DCADius project"
+msgstr "Projeto 3DCADius"
 
 #: crates/ui-egui/src/links.rs:14
-msgid "BIMCraft project or IFC"
-msgstr "Projeto BIMCraft ou IFC"
+msgid "3DCADius project or IFC"
+msgstr "Projeto 3DCADius ou IFC"
 
 #: crates/ui-egui/src/lib.rs:2618
-msgid "BIMCraft project, IFC or Revit"
-msgstr "Projeto BIMCraft, IFC ou Revit"
+msgid "3DCADius project, IFC or Revit"
+msgstr "Projeto 3DCADius, IFC ou Revit"
 
 #: crates/ui-egui/src/start.rs:461
-msgid "BIMCraft {} is available"
-msgstr "O BIMCraft {} está disponível"
+msgid "3DCADius {} is available"
+msgstr "O 3DCADius {} está disponível"
 
 #: crates/ui-egui/src/updates.rs:94
-msgid "BIMCraft {} is available. You have {}."
-msgstr "O BIMCraft {} está disponível. Você tem a versão {}."
+msgid "3DCADius {} is available. You have {}."
+msgstr "O 3DCADius {} está disponível. Você tem a versão {}."
 
 #: crates/ui-egui/src/start.rs:471
-msgid "BIMCraft {} is ready to install"
-msgstr "O BIMCraft {} está pronto para instalar"
+msgid "3DCADius {} is ready to install"
+msgstr "O 3DCADius {} está pronto para instalar"
 
 #: crates/ui-egui/src/updates.rs:122
-msgid "BIMCraft {} is ready. It will close, update and start again."
-msgstr "O BIMCraft {} está pronto. Ele vai fechar, atualizar e abrir de novo."
+msgid "3DCADius {} is ready. It will close, update and start again."
+msgstr "O 3DCADius {} está pronto. Ele vai fechar, atualizar e abrir de novo."
 
 #: crates/ui-egui/src/start.rs:481
-msgid "BIMCraft {} is up to date"
-msgstr "O BIMCraft {} está atualizado"
+msgid "3DCADius {} is up to date"
+msgstr "O 3DCADius {} está atualizado"
 
 #: crates/ui-egui/src/updates.rs:45
-msgid "BIMCraft {} is up to date."
-msgstr "O BIMCraft {} está atualizado."
+msgid "3DCADius {} is up to date."
+msgstr "O 3DCADius {} está atualizado."
 
 #: crates/ui-egui/src/start.rs:99
 msgid "Back"
@@ -2299,12 +2299,12 @@ msgstr "Baixar"
 
 #: crates/ui-egui/src/start.rs:465
 #: crates/ui-egui/src/updates.rs:114
-msgid "Downloading BIMCraft {}…"
-msgstr "Baixando o BIMCraft {}…"
+msgid "Downloading 3DCADius {}…"
+msgstr "Baixando o 3DCADius {}…"
 
 #: crates/ui-egui/src/updates.rs:97
-msgid "Downloads and checks the update; BIMCraft then closes, updates and starts again."
-msgstr "Baixa e confere a atualização; depois o BIMCraft fecha, atualiza e abre de novo."
+msgid "Downloads and checks the update; 3DCADius then closes, updates and starts again."
+msgstr "Baixa e confere a atualização; depois o 3DCADius fecha, atualiza e abre de novo."
 
 #: crates/ui-egui/src/fillpatterns.rs:559
 msgid "Drafting"
@@ -3394,8 +3394,8 @@ msgid "Inspection Boxes"
 msgstr "Caixas de inspeção"
 
 #: crates/ui-egui/src/updates.rs:71
-msgid "Installing BIMCraft {}…"
-msgstr "Instalando o BIMCraft {}…"
+msgid "Installing 3DCADius {}…"
+msgstr "Instalando o 3DCADius {}…"
 
 #: crates/ui-egui/src/editor.rs:572
 msgid "Instance"
@@ -3750,8 +3750,8 @@ msgid "Link Model"
 msgstr "Vincular modelo"
 
 #: crates/ui-egui/src/lib.rs:3401
-msgid "Link Model (LK): another project, a BIMCraft file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
-msgstr "Vincular modelo (LK): outro projeto, um arquivo BIMCraft ou um IFC, mostrado neste como referência que não se edita: em meio-tom nas plantas, nos cortes e na vista 3D, e com snap nele"
+msgid "Link Model (LK): another project, a 3DCADius file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
+msgstr "Vincular modelo (LK): outro projeto, um arquivo 3DCADius ou um IFC, mostrado neste como referência que não se edita: em meio-tom nas plantas, nos cortes e na vista 3D, e com snap nele"
 
 #: crates/ui-egui/src/properties.rs:354
 msgid "Linked File"
@@ -3774,8 +3774,8 @@ msgid "Load Family"
 msgstr "Carregar família"
 
 #: crates/ui-egui/src/lib.rs:3726
-msgid "Load Family: a family saved as a .json file, BIMCraft's own"
-msgstr "Carregar família: uma família salva como arquivo .json, do próprio BIMCraft"
+msgid "Load Family: a family saved as a .json file, 3DCADius's own"
+msgstr "Carregar família: uma família salva como arquivo .json, do próprio 3DCADius"
 
 #: crates/ui-egui/src/editor.rs:1015
 msgid "Load Family…"
@@ -8210,8 +8210,8 @@ msgid "{}: `{}` isn't a number"
 msgstr "{}: `{}` não é um número"
 
 #: crates/ui-egui/src/revit.rs:136
-msgid "{}: this build of BIMCraft was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
-msgstr "{}: esta versão do BIMCraft foi feita sem suporte ao Revit (`--no-default-features`); compile com o recurso `rvt`, que vem ativado por padrão, para ler arquivos do Revit"
+msgid "{}: this build of 3DCADius was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
+msgstr "{}: esta versão do 3DCADius foi feita sem suporte ao Revit (`--no-default-features`); compile com o recurso `rvt`, que vem ativado por padrão, para ler arquivos do Revit"
 
 #: crates/ui-egui/src/favorites.rs:162
 #: crates/ui-egui/src/fillpatterns.rs:353
