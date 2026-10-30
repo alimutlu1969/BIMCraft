@@ -2223,7 +2223,7 @@ fn new(s: &mut Session, p: &Value) -> R {
 }
 
 fn language_param(c: &str, code: &str) -> Result<Language, String> {
-    let codes = "en, pt, es or sv";
+    let codes = Language::ALL.map(|l| l.code()).join(", ");
     Language::from_code(code).ok_or_else(|| bad(c, format!("`{code}` is no language here; use {codes}")))
 }
 

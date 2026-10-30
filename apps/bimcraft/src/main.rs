@@ -10,7 +10,7 @@ use std::process::ExitCode;
 
 use bimcraft_core::cad::DwgReader;
 use bimcraft_core::engine::Session;
-use bimcraft_core::sample::SAMPLE;
+use bimcraft_core::sample;
 use bimcraft_ui_egui::control::Control;
 use bimcraft_ui_egui::revit::{Importer, is_revit};
 use bimcraft_ui_egui::{BimApp, Status, lang};
@@ -85,7 +85,7 @@ fn main() -> ExitCode {
                 println!("{}", bimcraft_update::version_line(env!("CARGO_PKG_VERSION")));
                 return ExitCode::SUCCESS;
             }
-            "--sample" => session.script(SAMPLE).map(|_| ()),
+            "--sample" => sample::load(&mut session, language.project()),
             "--highrise" => session.execute("highrise", &json!({})).map(|_| ()),
             flag if flag.starts_with('-') => {
                 eprintln!("bimcraft: unknown option `{flag}`\n\n{USAGE}");

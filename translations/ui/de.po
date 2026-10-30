@@ -557,7 +557,7 @@ msgstr "Fragt bei ungespeicherten Änderungen zuerst nach dem Speichern, schlie�
 
 #: crates/ui-egui/src/properties.rs:377
 msgid "Associated Level"
-msgstr ""
+msgstr "Zugeordnete Ebene"
 
 #: crates/core/src/model.rs:2171
 msgid "At wall centre line"
@@ -949,11 +949,11 @@ msgstr ""
 
 #: crates/ui-egui/src/properties.rs:1061
 msgid "Ceiling Plan"
-msgstr ""
+msgstr "Deckenplan"
 
 #: crates/ui-egui/src/browser.rs:428
 msgid "Ceiling Plans"
-msgstr ""
+msgstr "Deckenpläne"
 
 #: crates/ui-egui/src/lib.rs:3059
 msgid "Ceiling: click inside a room for a ceiling out to its walls"
@@ -1894,7 +1894,7 @@ msgstr ""
 
 #: crates/ui-egui/src/properties.rs:382
 msgid "Cut Plane"
-msgstr ""
+msgstr "Schnittebene"
 
 #: crates/ui-egui/src/editor.rs:150
 msgid "Cylinder"
@@ -2492,7 +2492,7 @@ msgstr ""
 
 #: crates/ui-egui/src/browser.rs:431
 msgid "Elevations (Building Elevation)"
-msgstr ""
+msgstr "Ansichten (Gebäudeansicht)"
 
 #: crates/core/src/draw.rs:114
 msgid "Ellipse"
@@ -2590,7 +2590,7 @@ msgstr ""
 
 #: crates/ui-egui/src/properties.rs:336
 msgid "Extents"
-msgstr ""
+msgstr "Ausdehnung"
 
 #: crates/ui-egui/src/editor.rs:152
 msgid "Extrusion"
@@ -2857,7 +2857,7 @@ msgstr ""
 
 #: crates/ui-egui/src/properties.rs:1060
 msgid "Floor Plan"
-msgstr ""
+msgstr "Grundriss"
 
 #: crates/ui-egui/src/lib.rs:2386
 #: crates/ui-egui/src/lib.rs:2387
@@ -2866,7 +2866,7 @@ msgstr ""
 
 #: crates/ui-egui/src/browser.rs:427
 msgid "Floor Plans"
-msgstr ""
+msgstr "Grundrisse"
 
 #: crates/core/src/schedule.rs:120
 msgid "Floor Schedule"
@@ -3088,7 +3088,7 @@ msgstr ""
 
 #: crates/ui-egui/src/graphics.rs:592
 msgid "Graphics"
-msgstr ""
+msgstr "Grafik"
 
 #: crates/ui-egui/src/settings.rs:390
 msgid "Graphics card"
@@ -3299,7 +3299,7 @@ msgstr ""
 
 #: crates/ui-egui/src/properties.rs:137
 msgid "Identity Data"
-msgstr ""
+msgstr "Identitätsdaten"
 
 #: crates/ui-egui/src/lib.rs:4510
 msgid "If you don't, the changes since it was last saved are lost."
@@ -5825,7 +5825,7 @@ msgstr "Listen"
 
 #: crates/ui-egui/src/browser.rs:455
 msgid "Schedules/Quantities (all)"
-msgstr ""
+msgstr "Listen/Mengen (alle)"
 
 #: crates/core/src/model.rs:2374
 msgid "Screed"
@@ -5838,7 +5838,7 @@ msgstr ""
 
 #: crates/ui-egui/src/browser.rs:268
 msgid "Search the Project Browser"
-msgstr ""
+msgstr "Projektbrowser durchsuchen"
 
 #: crates/ui-egui/src/browser.rs:261
 #: crates/ui-egui/src/shortcuts.rs:392
@@ -5871,7 +5871,7 @@ msgstr ""
 
 #: crates/ui-egui/src/browser.rs:431
 msgid "Sections (Building Section)"
-msgstr ""
+msgstr "Schnitte (Gebäudeschnitt)"
 
 #: crates/ui-egui/src/dimtypes.rs:303
 #: crates/ui-egui/src/linestyles/creator.rs:132
@@ -6026,7 +6026,7 @@ msgstr "Pläne"
 
 #: crates/ui-egui/src/browser.rs:369
 msgid "Sheets (all)"
-msgstr ""
+msgstr "Pläne (alle)"
 
 #: crates/ui-egui/src/lib.rs:2926
 msgid "Sheets as PDF…"
@@ -7267,7 +7267,7 @@ msgstr "Ansicht"
 
 #: crates/ui-egui/src/properties.rs:384
 msgid "View Depth"
-msgstr ""
+msgstr "Ansichtstiefe"
 
 #: crates/ui-egui/src/purge.rs:17
 msgid "View Filters"
@@ -7279,7 +7279,7 @@ msgstr ""
 
 #: crates/ui-egui/src/graphics.rs:120
 msgid "View Range"
-msgstr ""
+msgstr "Ansichtsbereich"
 
 #: crates/ui-egui/src/graphics.rs:612
 msgid "View Scale"
@@ -7316,7 +7316,7 @@ msgstr ""
 
 #: crates/ui-egui/src/browser.rs:438
 msgid "Views (all)"
-msgstr ""
+msgstr "Ansichten (alle)"
 
 #: crates/ui-egui/src/graphics.rs:831
 msgid "Visibility"

@@ -1,5 +1,10 @@
 //! A small single-storey house built from commands: the demo (`bimcraft-cli run --sample`) and
-//! a test of the whole command set.
+//! a test of the whole command set. [`load`] builds it, then names levels, elevations and the
+//! section in a project's language (families stay English in the script, as the types are).
+
+use crate::engine::Session;
+use crate::language::Language;
+use crate::model::{Element, Facing};
 
 mod highrise;
 pub use highrise::highrise;
@@ -73,10 +78,81 @@ component {"family": "Desk", "type": "1400 x 700", "at": [9850, 1500], "angle": 
 component {"family": "Chair", "at": [8875, 1500], "angle": 90}
 "#;
 
+/// Builds the sample house, then names its levels, elevations and section in `language` (and sets the project to it).
+pub fn load(session: &mut Session, language: Language) -> Result<(), String> {
+    session.script(SAMPLE)?;
+    localize_standard_views(session, language);
+    Ok(())
+}
+
+/// Renames Level N, the four sides and Section 1 into `language`, and sets the project's language.
+fn localize_standard_views(session: &mut Session, language: Language) {
+    if language == Language::English {
+        return;
+    }
+    let model = session.model_mut();
+    for element in model.elements.values_mut() {
+        match element {
+            Element::Level(level) => {
+                if let Some(name) = level_name_in(&level.name, language) {
+                    level.name = name;
+                }
+            }
+            Element::Elevation(view) => {
+                if let Some(facing) = Facing::parse(&view.name) {
+                    view.name = language.word(facing.name()).to_string();
+                }
+            }
+            Element::Section(view) if view.name == "Section 1" => {
+                view.name = format!("{} 1", language.word("Section"));
+            }
+            _ => {}
+        }
+    }
+    model.language = language;
+}
+
+/// `Level 1` (in any project language) as `Ebene 1` in `to`, when the name is the stock Level N form.
+fn level_name_in(name: &str, to: Language) -> Option<String> {
+    for lang in Language::ALL {
+        let word = lang.word("Level");
+        let prefix = format!("{word} ");
+        if let Some(rest) = name.strip_prefix(&prefix)
+            && rest.chars().all(|c| c.is_ascii_digit())
+            && !rest.is_empty()
+        {
+            return Some(format!("{} {rest}", to.word("Level")));
+        }
+    }
+    None
+}
+
 #[cfg(test)]
 mod tests {
     use crate::engine::Session;
+    use crate::language::Language;
     use serde_json::json;
+
+    #[test]
+    fn the_sample_in_german_names_levels_and_elevations_in_german() {
+        let mut s = Session::new();
+        super::load(&mut s, Language::German).unwrap();
+        assert_eq!(s.model.language, Language::German);
+        let levels: Vec<_> = s.model.levels().into_iter().map(|(_, l)| l.name.as_str()).collect();
+        assert_eq!(levels, ["Ebene 1", "Ebene 2"]);
+        let mut elevations: Vec<_> = s
+            .model
+            .elements
+            .values()
+            .filter_map(|e| match e {
+                crate::model::Element::Elevation(v) => Some(v.name.as_str()),
+                _ => None,
+            })
+            .collect();
+        elevations.sort_unstable();
+        assert_eq!(elevations, ["Nord", "Ost", "Süd", "West"]);
+        assert!(s.model.elements.values().any(|e| matches!(e, crate::model::Element::Section(v) if v.name == "Schnitt 1")));
+    }
 
     #[test]
     fn highrise_is_an_original_valid_twenty_storey_project() {
