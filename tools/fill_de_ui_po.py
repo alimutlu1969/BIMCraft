@@ -1,310 +1,183 @@
 #!/usr/bin/env python3
-"""Apply curated German msgstr values to translations/ui/de.po (leave the rest English)."""
+"""Fill empty msgstr entries in translations/ui/de.po (Argos EN→DE + BIM glossary)."""
 
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
+
+import argostranslate.translate
 
 ROOT = Path(__file__).resolve().parents[1]
 PO = ROOT / "translations" / "ui" / "de.po"
 
-# Curated UI strings: start page, settings, ribbon, common dialogs, updates.
-DE: dict[str, str] = {
-    " Left out: {}{}.": " Ausgelassen: {}{}.",
-    " Moved {}, {} mm to bring it near the origin.": " Um {}, {} mm verschoben, näher an den Ursprung.",
-    "(none)": "(keine)",
-    "1 element": "1 Element",
-    "3D View": "3D-Ansicht",
-    "3D View: {3D}": "3D-Ansicht: {3D}",
-    "3D Views": "3D-Ansichten",
-    "3DCADius couldn't start": "3DCADius konnte nicht starten",
-    "3DCADius family": "3DCADius-Familie",
-    "3DCADius project": "3DCADius-Projekt",
-    "3DCADius project or IFC": "3DCADius-Projekt oder IFC",
-    "3DCADius project, IFC or Revit": "3DCADius-Projekt, IFC oder Revit",
-    "3DCADius {} is available": "3DCADius {} ist verfügbar",
-    "3DCADius {} is available. You have {}.": "3DCADius {} ist verfügbar. Sie haben {}.",
-    "3DCADius {} is ready to install": "3DCADius {} ist bereit zur Installation",
-    "3DCADius {} is ready. It will close, update and start again.": "3DCADius {} ist bereit. Es wird geschlossen, aktualisiert und neu gestartet.",
-    "3DCADius {} is up to date": "3DCADius {} ist aktuell",
-    "3DCADius {} is up to date.": "3DCADius {} ist aktuell.",
-    "A 3DCADius project or an IFC file.": "Ein 3DCADius-Projekt oder eine IFC-Datei.",
-    "A 3DCADius project, an IFC or a Revit file.": "Ein 3DCADius-Projekt, eine IFC- oder eine Revit-Datei.",
-    "An empty project to model in.": "Ein leeres Projekt zum Modellieren.",
-    "Annotate": "Beschriften",
+# Preferred BIM / Revit / 3DCADius wording over raw machine output.
+GLOSSARY: dict[str, str] = {
+    "Align": "Ausrichten",
+    "Align (AL): pick a reference line, then what to line up with it": "Ausrichten (AL): Bezugslinie wählen, dann was daran ausgerichtet wird",
     "Architecture": "Architektur",
-    "Asks to save first if there are unsaved changes, then closes 3DCADius, installs the update and starts it again.": "Fragt bei ungespeicherten Änderungen zuerst nach dem Speichern, schließt dann 3DCADius, installiert die Aktualisierung und startet neu.",
-    "Back": "Zurück",
-    "Back to {}": "Zurück zu {}",
-    "Building information modelling, open and free.": "Bauwerksdatenmodellierung, offen und kostenlos.",
+    "Associated Level": "Zugeordnete Ebene",
+    "Attach Top/Base": "Oben/Unten anbinden",
+    "Beam": "Träger",
+    "Bottom": "Unten",
     "Cancel": "Abbrechen",
     "Ceiling": "Decke",
-    "Check for updates": "Nach Aktualisierungen suchen",
+    "Ceiling Plan": "Deckenplan",
+    "Ceiling Plans": "Deckenpläne",
+    "Centimetres": "Zentimeter",
     "Close": "Schließen",
+    "Close Inactive": "Inaktive schließen",
     "Column": "Stütze",
-    "Component": "Bauteil",
-    "Dark": "Dunkel",
+    "Constraints": "Zwangsbedingungen",
+    "Copy": "Kopieren",
+    "Crop View": "Ansicht beschneiden",
+    "Cut Plane": "Schnittebene",
     "Dark Mode": "Dunkelmodus",
+    "Data": "Daten",
+    "Data Outlet": "Datensteckdose",
     "Delete": "Löschen",
+    "Demolish": "Abbruch",
+    "Detach Top/Base": "Oben/Unten lösen",
+    "Detail Level": "Detaillierungsgrad",
+    "Dimension": "Bemaßung",
+    "Dimensions": "Bemaßungen",
     "Door": "Tür",
-    "Downloading 3DCADius {}…": "3DCADius {} wird heruntergeladen…",
-    "Downloads and checks the update; 3DCADius then closes, updates and starts again.": "Lädt die Aktualisierung herunter und prüft sie; danach wird 3DCADius geschlossen, aktualisiert und neu gestartet.",
+    "Down Conductor": "Ableitung",
+    "Duplicate View": "Ansicht duplizieren",
+    "Earthing": "Erdung",
+    "Earthing Conductor": "Erdungsleiter",
+    "Earthing Electrode": "Erder",
+    "Edit": "Bearbeiten",
+    "Edit Family": "Familie bearbeiten",
+    "Edit Type": "Typ bearbeiten",
+    "Electrical": "Elektro",
     "Elevation": "Ansicht",
-    "Esc cancels.": "Esc bricht ab.",
-    "File": "Datei",
+    "Elevations (Building Elevation)": "Ansichten (Gebäudeansicht)",
+    "Equality Display": "Gleichheitsanzeige",
+    "Extents": "Ausdehnung",
+    "Families": "Familien",
+    "Favorites": "Favoriten",
+    "Filters": "Filter",
     "Finish": "Fertigstellen",
+    "Flip": "Umdrehen",
     "Floor": "Geschossdecke",
+    "Floor Plan": "Grundriss",
+    "Floor Plans": "Grundrisse",
+    "Floor by Face": "Decke nach Fläche",
+    "Geometry": "Geometrie",
+    "Graphics": "Grafik",
     "Grid": "Achse",
-    "Help": "Hilfe",
-    "Insert": "Einfügen",
-    "Installing 3DCADius {}…": "3DCADius {} wird installiert…",
+    "Hide Category": "Kategorie ausblenden",
+    "Hide Element": "Element ausblenden",
+    "IDs of Selection": "IDs der Auswahl",
+    "Identity Data": "Identitätsdaten",
+    "Inspection Box": "Prüfschacht",
+    "Kind": "Art",
     "Language": "Sprache",
-    "Later": "Später",
     "Level": "Ebene",
-    "Light": "Hell",
+    "Lightning Protection": "Blitzschutz",
+    "Line Through": "Linie durch",
+    "Linked Models": "Verknüpfte Modelle",
     "Manage": "Verwalten",
+    "Mass Floors": "Massengeschosse",
+    "Massing": "Massenmodell",
+    "Materials": "Materialien",
+    "Metres": "Meter",
+    "Millimetres": "Millimeter",
+    "Mirror": "Spiegeln",
+    "Model by Face": "Modell nach Fläche",
     "Modify": "Ändern",
-    "New": "Neu",
+    "Move": "Verschieben",
+    "New Family": "Neue Familie",
     "New Project": "Neues Projekt",
-    "No": "Nein",
-    "No recent projects yet": "Noch keine zuletzt verwendeten Projekte",
-    "OK": "OK",
-    "Open…": "Öffnen…",
-    "Properties": "Eigenschaften",
+    "Offset": "Versatz",
+    "Orientation": "Ausrichtung",
+    "Other": "Sonstiges",
+    "Override Graphics": "Grafik überschreiben",
+    "Paint": "Farbe auftragen",
+    "Patch Panel": "Patchfeld",
+    "Phasing": "Phasen",
+    "Place View": "Ansicht platzieren",
+    "Plumbing": "Sanitär",
+    "Prefix": "Präfix",
     "Project Browser": "Projektbrowser",
+    "Project Language": "Projektsprache",
+    "Project Parameters": "Projektparameter",
+    "Project Units": "Projekteinheiten",
+    "Properties": "Eigenschaften",
+    "Purge Unused": "Nicht verwendetes bereinigen",
+    "Rack": "Gestell",
     "Railing": "Geländer",
     "Ramp": "Rampe",
-    "Recent": "Zuletzt verwendet",
     "Redo": "Wiederherstellen",
-    "Restart and install": "Neu starten und installieren",
+    "Remove Paint": "Farbe entfernen",
+    "Replace With Text": "Durch Text ersetzen",
     "Roof": "Dach",
+    "Roof by Face": "Dach nach Fläche",
     "Room": "Raum",
+    "Room Area Computation": "Raumberechnung",
+    "Rotate": "Drehen",
     "Save": "Speichern",
     "Save As…": "Speichern unter…",
-    "Save changes to {}?": "Änderungen an {} speichern?",
-    "Schedule": "Liste",
+    "Schedules/Quantities (all)": "Listen/Mengen (alle)",
     "Section": "Schnitt",
+    "Section Box": "Schnittbox",
+    "Sections (Building Section)": "Schnitte (Gebäudeschnitt)",
+    "Select by ID": "Nach ID auswählen",
     "Settings": "Einstellungen",
     "Sheet": "Plan",
-    "Skip this version": "Diese Version überspringen",
+    "Sheets (all)": "Pläne (alle)",
+    "Shortcuts": "Tastenkürzel",
+    "Show Mass": "Masse anzeigen",
+    "Snaps": "Fangpunkte",
     "Stair": "Treppe",
-    "Start": "Start",
     "Structure": "Tragwerk",
-    "The project stays as you left it.": "Das Projekt bleibt, wie Sie es verlassen haben.",
-    "The projects you open or save show here.": "Hier erscheinen Projekte, die Sie öffnen oder speichern.",
-    "Undo": "Rückgängig",
-    "Update now": "Jetzt aktualisieren",
-    "View": "Ansicht",
-    "Wall": "Wand",
-    "What's new": "Was ist neu",
-    "Window": "Fenster",
-    "Yes": "Ja",
-    "About": "Info",
-    "Appearance": "Darstellung",
-    "Beam": "Träger",
-    "Browse": "Durchsuchen",
-    "Copy": "Kopieren",
-    "Create": "Erstellen",
-    "Dimensions": "Bemaßungen",
-    "Edit": "Bearbeiten",
-    "Error": "Fehler",
-    "Export": "Exportieren",
-    "Family": "Familie",
-    "Filter": "Filter",
-    "Hide": "Ausblenden",
-    "Import": "Importieren",
-    "Move": "Verschieben",
-    "Name": "Name",
-    "Options": "Optionen",
-    "Paste": "Einfügen",
-    "Place": "Platzieren",
-    "Print": "Drucken",
-    "Rotate": "Drehen",
-    "Search": "Suchen",
-    "Select": "Auswählen",
-    "Show": "Anzeigen",
+    "Suffix": "Suffix",
     "Tag": "Beschriftung",
+    "Technical Standards": "Technische Normen",
     "Text": "Text",
-    "Type": "Typ",
-    "Units": "Einheiten",
-    "Width": "Breite",
-    "Height": "Höhe",
-    "Length": "Länge",
-    "Thickness": "Dicke",
-    "Apply": "Übernehmen",
-    "Reset": "Zurücksetzen",
-    "Defaults": "Standardwerte",
-    "Performance": "Leistung",
-    "Updates": "Aktualisierungen",
-    "General": "Allgemein",
-    "Home": "Start",
-    "Project": "Projekt",
-    "Plans": "Grundrisse",
-    "Sheets": "Pläne",
-    "Schedules": "Listen",
-    "Families": "Familien",
-    "Materials": "Materialien",
-    "Visibility/Graphics": "Sichtbarkeit/Grafik",
-    "Object Styles": "Objektstile",
-    "Line Weights": "Strichstärken",
-    "Line Styles": "Linienstile",
-    "Fill Patterns": "Füllmuster",
-    "Phases": "Phasen",
-    "Design Options": "Entwurfsoptionen",
-    "Linked Models": "Verknüpfte Modelle",
-    "Point Cloud": "Punktwolke",
-    "Import CAD": "CAD importieren",
-    "Link CAD": "CAD verknüpfen",
-    "Link Model": "Modell verknüpfen",
-    "Load Family": "Familie laden",
-    "Type Properties": "Typeigenschaften",
-    "Instance Properties": "Exemplareigenschaften",
-    "Edit Boundary": "Begrenzung bearbeiten",
-    "Finish Edit Mode": "Bearbeitungsmodus beenden",
-    "Cancel Edit Mode": "Bearbeitungsmodus abbrechen",
-    "Options Bar": "Optionsleiste",
-    "Status": "Status",
-    "Ready": "Bereit",
-    "Warning": "Warnung",
-    "Duplicate": "Duplizieren",
-    "Rename": "Umbenennen",
-    "Align": "Ausrichten",
-    "Trim": "Stutzen",
-    "Extend": "Verlängern",
-    "Split": "Teilen",
-    "Offset": "Versatz",
-    "Mirror": "Spiegeln",
-    "Array": "Anordnung",
-    "Group": "Gruppe",
-    "Ungroup": "Gruppierung aufheben",
-    "Pin": "Fixieren",
-    "Unpin": "Fixierung lösen",
-    "Lock": "Sperren",
-    "Unlock": "Entsperren",
-    "Zoom": "Zoom",
-    "Pan": "Schwenken",
-    "Orbit": "Orbit",
-    "Section Box": "Schnittbox",
-    "Crop View": "Ansicht beschneiden",
-    "Temporary Hide/Isolate": "Vorübergehend ausblenden/isolieren",
-    "Reset Temporary Hide/Isolate": "Vorübergehendes Ausblenden/Isolieren zurücksetzen",
-    "Isolate": "Isolieren",
-    "Hide Element": "Element ausblenden",
-    "Unhide": "Einblenden",
-    "Measure": "Messen",
-    "Spot Elevation": "Höhenkote",
-    "Text Note": "Textnotiz",
-    "Detail Line": "Detaillinie",
-    "Filled Region": "Gefüllter Bereich",
-    "Masking Region": "Maskierungsbereich",
-    "Repeating Detail": "Wiederholungsdetail",
-    "Create Group": "Gruppe erstellen",
-    "Place Detail Group": "Detailgruppe platzieren",
-    "Keyboard Shortcuts": "Tastenkürzel",
-    "Open Recent": "Zuletzt geöffnet",
-    "Close Project": "Projekt schließen",
-    "Exit": "Beenden",
-    "Don't Save": "Nicht speichern",
-    "Save changes?": "Änderungen speichern?",
-    "Are you sure?": "Sind Sie sicher?",
-    "Browse…": "Durchsuchen…",
-    "Choose…": "Auswählen…",
-    "None": "Keine",
-    "All": "Alle",
-    "On": "Ein",
-    "Off": "Aus",
-    "Enabled": "Aktiviert",
-    "Disabled": "Deaktiviert",
-    "Automatic": "Automatisch",
-    "Manual": "Manuell",
-    "Custom": "Benutzerdefiniert",
-    "Default": "Standard",
-    "Current": "Aktuell",
-    "Previous": "Vorherig",
-    "Next": "Weiter",
-    "Add": "Hinzufügen",
-    "Remove": "Entfernen",
-    "Up": "Nach oben",
-    "Down": "Nach unten",
-    "Left": "Links",
-    "Right": "Rechts",
+    "Thin Lines": "Dünne Linien",
     "Top": "Oben",
-    "Bottom": "Unten",
-    "Centre": "Mitte",
-    "Center": "Mitte",
-    "North": "Nord",
-    "South": "Süd",
-    "East": "Ost",
-    "West": "West",
-    "Plumbing": "Sanitär",
-    "Electrical": "Elektro",
-    "Mechanical": "HLK",
-    "Reinforcement": "Bewehrung",
-    "Foundation": "Fundament",
-    "Beam System": "Trägersystem",
-    "Structural Column": "Tragwerksstütze",
-    "Structural Floor": "Tragwerksdecke",
-    "Isolated Footing": "Einzelfundament",
-    "Wall Foundation": "Streifenfundament",
-    "Pipe": "Rohr",
-    "Duct": "Kanal",
-    "Conduit": "Rohrleitung",
-    "Cable Tray": "Kabelrinne",
-    "Wire": "Leitung",
-    "Fixture": "Einbauteil",
-    "Air Terminal": "Fangstange",
-    "Mass": "Masse",
-    "Shaft": "Schacht",
-    "Dormer": "Dachgaube",
-    "Curtain Wall": "Vorhangfassade",
-    "Model": "Modell",
-    "Drafting": "Zeichnung",
-    "Legend": "Legende",
-    "Title Block": "Schriftfeld",
-    "Viewport": "Ansichtsfenster",
-    "Scale": "Maßstab",
-    "Detail Level": "Detaillierungsgrad",
-    "Coarse": "Grob",
-    "Medium": "Mittel",
-    "Fine": "Fein",
-    "Wireframe": "Drahtmodell",
-    "Hidden Line": "Verdeckte Linie",
-    "Shaded": "Schattiert",
-    "Realistic": "Realistisch",
-    "Shadows": "Schatten",
-    "Ambient Shadows": "Umgebungsschatten",
-    "Underlay": "Unterlage",
-    "Color": "Farbe",
-    "Colour": "Farbe",
-    "Pattern": "Muster",
-    "Material": "Material",
-    "Category": "Kategorie",
-    "Subcategory": "Unterkategorie",
-    "Workset": "Arbeitsbereich",
-    "Phase": "Phase",
-    "Created": "Erstellt",
-    "Demolished": "Abgebrochen",
-    "Existing": "Bestand",
-    "New Construction": "Neubau",
-    "Comments": "Kommentare",
-    "Mark": "Marke",
-    "Type Mark": "Typmarke",
-    "Family and Type": "Familie und Typ",
-    "Host": "Träger",
-    "Level Offset": "Ebenenversatz",
-    "Base Offset": "Basisversatz",
-    "Top Offset": "Oberkantenversatz",
-    "Unconnected Height": "Freie Höhe",
-    "Base Constraint": "Basisebene",
-    "Top Constraint": "Obere Begrenzung",
-    "Location Line": "Bezugslinie",
-    "Wall Centerline": "Wandachse",
-    "Core Centerline": "Kernachse",
-    "Finish Face: Exterior": "Fertigstellungsfläche: Außen",
-    "Finish Face: Interior": "Fertigstellungsfläche: Innen",
-    "Core Face: Exterior": "Kernfläche: Außen",
-    "Core Face: Interior": "Kernfläche: Innen",
+    "Type Properties": "Typeigenschaften",
+    "Undo": "Rückgängig",
+    "Update to Face": "An Fläche anpassen",
+    "User Interface": "Benutzeroberfläche",
+    "Value": "Wert",
+    "View": "Ansicht",
+    "View Depth": "Ansichtstiefe",
+    "View Range": "Ansichtsbereich",
+    "View Templates": "Ansichtsvorlagen",
+    "Views (all)": "Ansichten (alle)",
+    "Visibility/Graphics": "Sichtbarkeit/Grafik",
+    "Voice Outlet": "Telefonsteckdose",
+    "Wall": "Wand",
+    "Wall by Face": "Wand nach Fläche",
+    "Walls": "Wände",
+    "Window": "Fenster",
+    "Above": "Darüber",
+    "Below": "Darunter",
+    "Capture & Descent": "Auffang & Ableitung",
+    "Cabling": "Verkabelung",
+    "Conceptual Mass": "Konzeptmasse",
+    "Outlets & Equipment": "Dosen & Geräte",
+    "Apply": "Übernehmen",
+    "OK": "OK",
+    "Yes": "Ja",
+    "No": "Nein",
+    "Open…": "Öffnen…",
+    "Feet and inches": "Fuß und Zoll",
+    "Feet": "Fuß",
+    "Inches": "Zoll",
+    "File": "Datei",
+    "Help": "Hilfe",
+    "Insert": "Einfügen",
+    "Annotate": "Beschriften",
+    "Search": "Suchen",
+    "Search the Project Browser": "Projektbrowser durchsuchen",
+    "3D View": "3D-Ansicht",
+    "3D Views": "3D-Ansichten",
+    "Building information modelling, open and free.": "Bauwerksdatenmodellierung, offen und kostenlos.",
 }
 
 
@@ -326,33 +199,79 @@ def unesc(s: str) -> str:
     return "".join(out)
 
 
+def protect_placeholders(text: str) -> tuple[str, list[str]]:
+    held: list[str] = []
+
+    def keep(m: re.Match[str]) -> str:
+        held.append(m.group(0))
+        return f"⟦{len(held) - 1}⟧"
+
+    return re.sub(r"\{\}|\{[^{}]+\}|`[^`]+`|\b[A-Z]{1,3}\b(?=:)", keep, text), held
+
+
+def restore_placeholders(text: str, held: list[str]) -> str:
+    def put(m: re.Match[str]) -> str:
+        i = int(m.group(1))
+        return held[i] if 0 <= i < len(held) else m.group(0)
+
+    return re.sub(r"⟦(\d+)⟧", put, text)
+
+
+def translate(english: str) -> str:
+    if english in GLOSSARY:
+        return GLOSSARY[english]
+    if not english.strip():
+        return english
+    # Keep pure symbols / numbers / shortcuts unchanged.
+    if re.fullmatch(r"[\d\s./:+\-–—%°'\"{}()\[\]]+", english):
+        return english
+    protected, held = protect_placeholders(english)
+    try:
+        de = argostranslate.translate.translate(protected, "en", "de")
+    except Exception as e:  # noqa: BLE001
+        print(f"fail: {english!r}: {e}", file=sys.stderr)
+        return ""
+    de = restore_placeholders(de, held)
+    if english.count("{}") != de.count("{}"):
+        return english
+    # Light cleanup of common machine artifacts
+    de = de.replace("..", ".").strip()
+    return de
+
+
 def main() -> None:
     text = PO.read_text(encoding="utf-8")
-    pair_re = re.compile(r'^msgid "(.*)"\nmsgstr ""$', re.M)
+    pair_re = re.compile(r'^msgid "(.*)"\nmsgstr "(.*)"$', re.M)
     filled = 0
-    missing_manual = []
+    kept = 0
+    skipped = 0
 
     def repl(m: re.Match[str]) -> str:
-        nonlocal filled
-        msgid = unesc(m.group(1))
+        nonlocal filled, kept, skipped
+        msgid_esc, msgstr_esc = m.group(1), m.group(2)
+        msgid = unesc(msgid_esc)
         if msgid == "":
             return m.group(0)
-        if msgid not in DE:
+        if msgstr_esc.strip():
+            # Refresh glossary hits even if already filled.
+            if msgid in GLOSSARY and unesc(msgstr_esc) != GLOSSARY[msgid]:
+                filled += 1
+                return f'msgid "{msgid_esc}"\nmsgstr "{esc(GLOSSARY[msgid])}"'
+            kept += 1
+            return m.group(0)
+        de = translate(msgid)
+        if not de.strip():
+            skipped += 1
             return m.group(0)
         filled += 1
-        return f'msgid "{m.group(1)}"\nmsgstr "{esc(DE[msgid])}"'
+        if filled % 100 == 0:
+            print(f"… {filled}", flush=True)
+        return f'msgid "{msgid_esc}"\nmsgstr "{esc(de)}"'
 
     new = pair_re.sub(repl, text)
-    for key in DE:
-        # report unused keys (typos / already filled)
-        if f'msgid "{esc(key)}"' not in text and f'msgid "{key}"' not in text:
-            missing_manual.append(key)
-
     PO.write_text(new, encoding="utf-8")
     empty = len(re.findall(r'^msgstr ""$', new, re.M))
-    print(f"filled={filled} empty_left={empty} unused_keys={len(missing_manual)}")
-    for k in missing_manual[:30]:
-        print(" unused:", k)
+    print(f"done filled_or_updated={filled} kept={kept} skipped={skipped} empty_left={empty}")
 
 
 if __name__ == "__main__":

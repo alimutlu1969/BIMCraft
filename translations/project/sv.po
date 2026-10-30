@@ -287,6 +287,8 @@ msgstr "Längd"
 
 #: crates/core/src/commands.rs:4334
 #: crates/core/src/model.rs:2503
+#: crates/core/src/sample.rs:118
+#: crates/core/src/sample.rs:124
 msgid "Level"
 msgstr "Nivå"
 
@@ -444,6 +446,7 @@ msgstr "Sitthöjd"
 
 #: crates/core/src/commands.rs:6810
 #: crates/core/src/commands.rs:8499
+#: crates/core/src/sample.rs:107
 msgid "Section"
 msgstr "Sektion"
 
