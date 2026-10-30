@@ -1262,7 +1262,7 @@ pub static ALL: &[Command] = &[
         &[],
         "{code?: en|pt|es|sv} the language the project's drawings speak (a stair's UP, a title block's SCALE, a schedule's \
          headings) and new names come in (levels, sections, elevations, sheets, rooms, schedules): English, Brazilian \
-         Portuguese, Spanish or Swedish. What's already named stays named",
+         Portuguese, Spanish, Swedish, Czech, French or German. What's already named stays named",
         language,
     ),
     edit(

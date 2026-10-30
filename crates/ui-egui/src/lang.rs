@@ -1,4 +1,5 @@
-//! The interface's language: English, as the code writes it, Brazilian Portuguese, Spanish or Simplified Chinese. What
+//! The interface's language: English, as the code writes it, Brazilian Portuguese, Spanish, Czech, French, German or
+//! Simplified Chinese. What
 //! the window shows goes through [`t`], English being its own key; the widget helpers translate
 //! their labels and tips, so most call sites pass English and read it back translated. What a
 //! project holds (names, what its drawings say) follows the project's language instead, and the
@@ -42,11 +43,13 @@ pub enum Lang {
     Spanish,
     Czech,
     French,
+    German,
     Chinese,
 }
 
 impl Lang {
-    pub const ALL: [Lang; 6] = [Lang::English, Lang::Portuguese, Lang::Spanish, Lang::Czech, Lang::French, Lang::Chinese];
+    pub const ALL: [Lang; 7] =
+        [Lang::English, Lang::Portuguese, Lang::Spanish, Lang::Czech, Lang::French, Lang::German, Lang::Chinese];
 
     /// The project language that goes with it, which new projects are named in: Chinese has none, so English.
     pub fn project(self) -> Language {
@@ -56,10 +59,11 @@ impl Lang {
             Lang::Spanish => Language::Spanish,
             Lang::Czech => Language::Czech,
             Lang::French => Language::French,
+            Lang::German => Language::German,
         }
     }
 
-    /// Its code in the settings file: en, pt, es, zh.
+    /// Its code in the settings file: en, pt, es, cs, fr, de, zh.
     pub fn code(self) -> &'static str {
         match self {
             Lang::Chinese => "zh",
@@ -97,6 +101,7 @@ impl From<Language> for Lang {
             Language::Spanish => Lang::Spanish,
             Language::Czech => Lang::Czech,
             Language::French => Lang::French,
+            Language::German => Lang::German,
         }
     }
 }
@@ -259,6 +264,12 @@ mod tests {
         set(Lang::Spanish);
         assert_eq!((t("Wall Schedule"), t("Save changes to {}?")), ("Tabla de muros", "¿Guardar los cambios en {}?"));
         assert_eq!((category("room", true), category("viewport", false)), ("Habitaciones".to_string(), "Vista en plano".to_string()));
+        set(Lang::German);
+        assert_eq!(
+            (t("New Project"), t("Settings"), t("Architecture"), t("Building information modelling, open and free.")),
+            ("Neues Projekt", "Einstellungen", "Architektur", "Bauwerksdatenmodellierung, offen und kostenlos.")
+        );
+        assert_eq!(tf("Save changes to {}?", &["Haus"]), "Änderungen an Haus speichern?");
         set(Lang::English);
     }
 
@@ -305,11 +316,12 @@ mod tests {
             assert_eq!(Lang::from_code(code), None, "{code}: Traditional is not what is here");
         }
         assert_eq!(
-            ["pt-BR", "es_419.UTF-8", "en-US", "de", ""].map(Lang::from_code),
-            [Some(Lang::Portuguese), Some(Lang::Spanish), Some(Lang::English), None, None]
+            ["pt-BR", "es_419.UTF-8", "en-US", "de", "de-DE", ""].map(Lang::from_code),
+            [Some(Lang::Portuguese), Some(Lang::Spanish), Some(Lang::English), Some(Lang::German), Some(Lang::German), None]
         );
         assert_eq!((Lang::Chinese.code(), Lang::Chinese.project()), ("zh", Language::English), "a project is never in Chinese");
         assert_eq!(Lang::from(Language::Swedish), Lang::English, "Swedish is a project language until its interface catalog is added");
+        assert_eq!(Lang::from(Language::German), Lang::German);
         assert_eq!(Lang::ALL.map(|l| Lang::from_code(l.code())), Lang::ALL.map(Some));
     }
 }

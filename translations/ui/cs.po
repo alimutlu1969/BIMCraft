@@ -44,6 +44,52 @@ msgstr "3D pohledy"
 msgid "3D view resolution"
 msgstr "Rozlišení 3D pohledu"
 
+#: apps/bimcraft/src/startup.rs:149
+msgid "3DCADius couldn't start"
+msgstr ""
+
+#: crates/ui-egui/src/editor.rs:1027
+#: crates/ui-egui/src/editor.rs:1057
+#: crates/ui-egui/src/lib.rs:3728
+msgid "3DCADius family"
+msgstr ""
+
+#: crates/ui-egui/src/lib.rs:2488
+msgid "3DCADius project"
+msgstr ""
+
+#: crates/ui-egui/src/links.rs:14
+msgid "3DCADius project or IFC"
+msgstr ""
+
+#: crates/ui-egui/src/lib.rs:2618
+msgid "3DCADius project, IFC or Revit"
+msgstr ""
+
+#: crates/ui-egui/src/start.rs:461
+msgid "3DCADius {} is available"
+msgstr ""
+
+#: crates/ui-egui/src/updates.rs:94
+msgid "3DCADius {} is available. You have {}."
+msgstr ""
+
+#: crates/ui-egui/src/start.rs:471
+msgid "3DCADius {} is ready to install"
+msgstr ""
+
+#: crates/ui-egui/src/updates.rs:122
+msgid "3DCADius {} is ready. It will close, update and start again."
+msgstr ""
+
+#: crates/ui-egui/src/start.rs:481
+msgid "3DCADius {} is up to date"
+msgstr ""
+
+#: crates/ui-egui/src/updates.rs:45
+msgid "3DCADius {} is up to date."
+msgstr ""
+
 #: crates/ui-egui/src/standards.rs:218
 msgid "45° Oblique Stroke (Tick)"
 msgstr ""
@@ -76,12 +122,12 @@ msgid "<Pick>"
 msgstr "<Vybrat>"
 
 #: crates/ui-egui/src/start.rs:308
-msgid "A BIMCraft project or an IFC file."
-msgstr "Projekt BIMCraft nebo soubor IFC."
+msgid "A 3DCADius project or an IFC file."
+msgstr ""
 
 #: crates/ui-egui/src/start.rs:306
-msgid "A BIMCraft project, an IFC or a Revit file."
-msgstr "Projekt BIMCraft, soubor IFC nebo soubor aplikace Revit."
+msgid "A 3DCADius project, an IFC or a Revit file."
+msgstr ""
 
 #: crates/ui-egui/src/editor.rs:679
 msgid "A blank value is the family's own, as the Parameters tab has it."
@@ -505,8 +551,8 @@ msgid "Ascending"
 msgstr "Vzestupně"
 
 #: crates/ui-egui/src/updates.rs:128
-msgid "Asks to save first if there are unsaved changes, then closes BIMCraft, installs the update and starts it again."
-msgstr "Při neuložených změnách se nejprve zeptá na uložení, poté ukončí BIMCraft, nainstaluje aktualizaci a znovu jej spustí."
+msgid "Asks to save first if there are unsaved changes, then closes 3DCADius, installs the update and starts it again."
+msgstr ""
 
 #: crates/ui-egui/src/properties.rs:377
 msgid "Associated Level"
@@ -574,52 +620,6 @@ msgstr ""
 msgid "Azimuth (°)"
 msgstr "Azimut (°)"
 
-#: apps/bimcraft/src/startup.rs:149
-msgid "BIMCraft couldn't start"
-msgstr "Aplikaci BIMCraft se nepodařilo spustit"
-
-#: crates/ui-egui/src/editor.rs:1027
-#: crates/ui-egui/src/editor.rs:1057
-#: crates/ui-egui/src/lib.rs:3728
-msgid "BIMCraft family"
-msgstr "Rodina BIMCraft"
-
-#: crates/ui-egui/src/lib.rs:2488
-msgid "BIMCraft project"
-msgstr "Projekt BIMCraft"
-
-#: crates/ui-egui/src/links.rs:14
-msgid "BIMCraft project or IFC"
-msgstr "Projekt BIMCraft nebo IFC"
-
-#: crates/ui-egui/src/lib.rs:2618
-msgid "BIMCraft project, IFC or Revit"
-msgstr "Projekt BIMCraft, IFC nebo Revit"
-
-#: crates/ui-egui/src/start.rs:461
-msgid "BIMCraft {} is available"
-msgstr "BIMCraft {} je k dispozici"
-
-#: crates/ui-egui/src/updates.rs:94
-msgid "BIMCraft {} is available. You have {}."
-msgstr "BIMCraft {} je k dispozici. Máte verzi {}."
-
-#: crates/ui-egui/src/start.rs:471
-msgid "BIMCraft {} is ready to install"
-msgstr "BIMCraft {} je připraven k instalaci"
-
-#: crates/ui-egui/src/updates.rs:122
-msgid "BIMCraft {} is ready. It will close, update and start again."
-msgstr "BIMCraft {} je připraven. Aplikace se ukončí, aktualizuje a znovu spustí."
-
-#: crates/ui-egui/src/start.rs:481
-msgid "BIMCraft {} is up to date"
-msgstr "BIMCraft {} je aktuální"
-
-#: crates/ui-egui/src/updates.rs:45
-msgid "BIMCraft {} is up to date."
-msgstr "BIMCraft {} je aktuální."
-
 #: crates/ui-egui/src/start.rs:99
 msgid "Back"
 msgstr "Zpět"
@@ -660,7 +660,7 @@ msgstr "Vzor pozadí"
 msgid "Background of the 3D view"
 msgstr "Pozadí 3D pohledu"
 
-#: crates/ui-egui/src/lang.rs:18
+#: crates/ui-egui/src/lang.rs:19
 msgid "Backups kept"
 msgstr "Počet zachovaných záloh"
 
@@ -1490,7 +1490,7 @@ msgstr "Klikněte do místa, kde začíná opakovaný detail."
 msgid "Click where the stair starts: the middle of its first riser."
 msgstr "Klikněte do místa nástupu schodiště: střed první podstupnice."
 
-#: crates/ui-egui/src/lang.rs:21
+#: crates/ui-egui/src/lang.rs:22
 msgid "Click which way it climbs: its risers take it up to the level above. Esc cancels."
 msgstr "Klikněte pro směr stoupání: podstupnice vyvedou rameno do podlaží výše. Klávesa Esc operaci zruší."
 
@@ -2161,7 +2161,7 @@ msgid "Diameter Symbol"
 msgstr ""
 
 #: crates/ui-egui/src/dimtypes.rs:94
-#: crates/ui-egui/src/lang.rs:24
+#: crates/ui-egui/src/lang.rs:25
 msgid "Dimension"
 msgstr "Kóta"
 
@@ -2189,7 +2189,7 @@ msgstr ""
 msgid "Dimension lines, witness lines, terminators, text placement, and level marker symbols."
 msgstr ""
 
-#: crates/ui-egui/src/lang.rs:25
+#: crates/ui-egui/src/lang.rs:26
 msgid "Dimensions"
 msgstr "Kóty"
 
@@ -2298,12 +2298,12 @@ msgstr "Stáhnout"
 
 #: crates/ui-egui/src/start.rs:465
 #: crates/ui-egui/src/updates.rs:114
-msgid "Downloading BIMCraft {}…"
-msgstr "Stahování BIMCraft {}…"
+msgid "Downloading 3DCADius {}…"
+msgstr ""
 
 #: crates/ui-egui/src/updates.rs:97
-msgid "Downloads and checks the update; BIMCraft then closes, updates and starts again."
-msgstr "Stáhne a ověří aktualizaci; BIMCraft se poté zavře, zaktualizuje a znovu spustí."
+msgid "Downloads and checks the update; 3DCADius then closes, updates and starts again."
+msgstr ""
 
 #: crates/ui-egui/src/fillpatterns.rs:559
 msgid "Drafting"
@@ -3393,8 +3393,8 @@ msgid "Inspection Boxes"
 msgstr "Zkušební svorky"
 
 #: crates/ui-egui/src/updates.rs:71
-msgid "Installing BIMCraft {}…"
-msgstr "Instalace aplikace BIMCraft {}…"
+msgid "Installing 3DCADius {}…"
+msgstr ""
 
 #: crates/ui-egui/src/editor.rs:572
 msgid "Instance"
@@ -3749,8 +3749,8 @@ msgid "Link Model"
 msgstr "Připojit model"
 
 #: crates/ui-egui/src/lib.rs:3401
-msgid "Link Model (LK): another project, a BIMCraft file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
-msgstr "Připojit model (LK): jiný projekt, soubor BIMCraft nebo IFC, zobrazený v tomto projektu jako needitovatelná reference: v polotónu v půdorysech, řezech a 3D pohledu, s možností uchopování"
+msgid "Link Model (LK): another project, a 3DCADius file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
+msgstr ""
 
 #: crates/ui-egui/src/properties.rs:354
 msgid "Linked File"
@@ -3773,8 +3773,8 @@ msgid "Load Family"
 msgstr "Načíst rodinu"
 
 #: crates/ui-egui/src/lib.rs:3726
-msgid "Load Family: a family saved as a .json file, BIMCraft's own"
-msgstr "Načíst rodinu: rodina uložená ve formátu .json, nativním pro BIMCraft"
+msgid "Load Family: a family saved as a .json file, 3DCADius's own"
+msgstr ""
 
 #: crates/ui-egui/src/editor.rs:1015
 msgid "Load Family…"
@@ -4246,7 +4246,7 @@ msgstr "Nejsou použity žádné filtry."
 msgid "No filters yet: New makes one."
 msgstr "Dosud žádné filtry: tlačítkem Nový vytvoříte nový."
 
-#: crates/ui-egui/src/lang.rs:125
+#: crates/ui-egui/src/lang.rs:130
 msgid "No font with Chinese characters was found on this system: install one (such as Noto Sans CJK) and choose Chinese again."
 msgstr "V tomto systému nebylo nalezeno žádné písmo se znaky čínštiny: nainstalujte písmo (například Noto Sans CJK) a zvolte čínštinu znovu."
 
@@ -4417,7 +4417,7 @@ msgstr ""
 msgid "Open Recent"
 msgstr "Otevřít nedávné"
 
-#: crates/ui-egui/src/lang.rs:22
+#: crates/ui-egui/src/lang.rs:23
 msgid "Open a schedule"
 msgstr "Otevřít výkaz"
 
@@ -6369,7 +6369,7 @@ msgstr "Schodiště"
 msgid "Stair: click where it starts, then where its run ends; a landing turns it"
 msgstr "Schodiště: klikněte na místo začátku a poté na konec ramene; podesta jej zalomí"
 
-#: crates/ui-egui/src/lang.rs:23
+#: crates/ui-egui/src/lang.rs:24
 msgid "Stair: click where it starts, then which way it climbs"
 msgstr "Schodiště: klikněte na místo začátku a poté na směr stoupání"
 
@@ -6554,7 +6554,7 @@ msgstr "Karta s {}"
 msgid "Table"
 msgstr "Stůl"
 
-#: crates/ui-egui/src/lang.rs:26
+#: crates/ui-egui/src/lang.rs:27
 msgid "Tag"
 msgstr "Popiska"
 
@@ -7505,7 +7505,7 @@ msgstr "Okno (WN): klikněte na stěnu"
 msgid "Window Schedule"
 msgstr "Výkaz oken"
 
-#: crates/ui-egui/src/lang.rs:27
+#: crates/ui-egui/src/lang.rs:28
 msgid "Windows"
 msgstr "Okna"
 
@@ -7755,7 +7755,7 @@ msgstr "vikýř: šířka `{}`, výška `{}` a sklon `{}` musí být čísla"
 msgid "ellipse"
 msgstr "elipsa"
 
-#: crates/ui-egui/src/lang.rs:20
+#: crates/ui-egui/src/lang.rs:21
 msgid "end"
 msgstr "konec"
 
@@ -7928,7 +7928,7 @@ msgstr ""
 msgid "standard overshoot"
 msgstr ""
 
-#: crates/ui-egui/src/lang.rs:19
+#: crates/ui-egui/src/lang.rs:20
 msgid "start"
 msgstr "začátek"
 
@@ -8209,8 +8209,8 @@ msgid "{}: `{}` isn't a number"
 msgstr "{}: `{}` není číslo"
 
 #: crates/ui-egui/src/revit.rs:136
-msgid "{}: this build of BIMCraft was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
-msgstr "{}: toto sestavení BIMCraft bylo vytvořeno bez podpory Revitu (`--no-default-features`); pro čtení souborů Revit proveďte sestavení s výchozí funkcí `rvt`"
+msgid "{}: this build of 3DCADius was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
+msgstr ""
 
 #: crates/ui-egui/src/favorites.rs:162
 #: crates/ui-egui/src/fillpatterns.rs:353
@@ -8299,442 +8299,442 @@ msgstr ""
 msgid "‹ Back"
 msgstr "‹ Zpět"
 
-#: crates/ui-egui/src/lang.rs:235
+#: crates/ui-egui/src/lang.rs:240
 msgctxt "category"
 msgid "3D View"
 msgstr "3D pohled"
 
-#: crates/ui-egui/src/lang.rs:220
+#: crates/ui-egui/src/lang.rs:225
 msgctxt "category"
 msgid "Beam"
 msgstr "Průvlak"
 
-#: crates/ui-egui/src/lang.rs:238
+#: crates/ui-egui/src/lang.rs:243
 msgctxt "category"
 msgid "CAD Import"
 msgstr "Import CAD"
 
-#: crates/ui-egui/src/lang.rs:228
+#: crates/ui-egui/src/lang.rs:233
 msgctxt "category"
 msgid "Cable"
 msgstr "Kabel"
 
-#: crates/ui-egui/src/lang.rs:226
+#: crates/ui-egui/src/lang.rs:231
 msgctxt "category"
 msgid "Cable Tray"
 msgstr "Kabelový žlab"
 
-#: crates/ui-egui/src/lang.rs:212
+#: crates/ui-egui/src/lang.rs:217
 msgctxt "category"
 msgid "Ceiling"
 msgstr "Podhled"
 
-#: crates/ui-egui/src/lang.rs:208
+#: crates/ui-egui/src/lang.rs:213
 msgctxt "category"
 msgid "Column"
 msgstr "Sloup"
 
-#: crates/ui-egui/src/lang.rs:209
+#: crates/ui-egui/src/lang.rs:214
 msgctxt "category"
 msgid "Component"
 msgstr "Komponenta"
 
-#: crates/ui-egui/src/lang.rs:225
+#: crates/ui-egui/src/lang.rs:230
 msgctxt "category"
 msgid "Conduit"
 msgstr "Trubka elektroinstalace"
 
-#: crates/ui-egui/src/lang.rs:232
+#: crates/ui-egui/src/lang.rs:237
 msgctxt "category"
 msgid "Detail Line"
 msgstr "Čára detailu"
 
-#: crates/ui-egui/src/lang.rs:202
+#: crates/ui-egui/src/lang.rs:207
 msgctxt "category"
 msgid "Dimension"
 msgstr "Kóta"
 
-#: crates/ui-egui/src/lang.rs:196
+#: crates/ui-egui/src/lang.rs:201
 msgctxt "category"
 msgid "Door"
 msgstr "Dveře"
 
-#: crates/ui-egui/src/lang.rs:229
+#: crates/ui-egui/src/lang.rs:234
 msgctxt "category"
 msgid "Down Conductor"
 msgstr "Svod hromosvodu"
 
-#: crates/ui-egui/src/lang.rs:230
+#: crates/ui-egui/src/lang.rs:235
 msgctxt "category"
 msgid "Earthing Conductor"
 msgstr "Zemnicí vodič"
 
-#: crates/ui-egui/src/lang.rs:205
+#: crates/ui-egui/src/lang.rs:210
 msgctxt "category"
 msgid "Elevation"
 msgstr "Pohled"
 
-#: crates/ui-egui/src/lang.rs:215
+#: crates/ui-egui/src/lang.rs:220
 msgctxt "category"
 msgid "Filled Region"
 msgstr "Vyplněná oblast"
 
-#: crates/ui-egui/src/lang.rs:198
+#: crates/ui-egui/src/lang.rs:203
 msgctxt "category"
 msgid "Floor"
 msgstr "Podlaha"
 
-#: crates/ui-egui/src/lang.rs:222
+#: crates/ui-egui/src/lang.rs:227
 msgctxt "category"
 msgid "Footing"
 msgstr "Základová patka"
 
-#: crates/ui-egui/src/lang.rs:201
+#: crates/ui-egui/src/lang.rs:206
 msgctxt "category"
 msgid "Grid"
 msgstr "Modulová osa"
 
-#: crates/ui-egui/src/lang.rs:200
+#: crates/ui-egui/src/lang.rs:205
 msgctxt "category"
 msgid "Level"
 msgstr "Podlaží"
 
-#: crates/ui-egui/src/lang.rs:236
+#: crates/ui-egui/src/lang.rs:241
 msgctxt "category"
 msgid "Linked Model"
 msgstr "Připojený model"
 
-#: crates/ui-egui/src/lang.rs:214
+#: crates/ui-egui/src/lang.rs:219
 msgctxt "category"
 msgid "Mass"
 msgstr "Objem"
 
-#: crates/ui-egui/src/lang.rs:216
+#: crates/ui-egui/src/lang.rs:221
 msgctxt "category"
 msgid "Mass Floor"
 msgstr "Podlaží objemu"
 
-#: crates/ui-egui/src/lang.rs:224
+#: crates/ui-egui/src/lang.rs:229
 msgctxt "category"
 msgid "Pipe"
 msgstr "Potrubí"
 
-#: crates/ui-egui/src/lang.rs:237
+#: crates/ui-egui/src/lang.rs:242
 msgctxt "category"
 msgid "Point Cloud"
 msgstr "Mračno bodů"
 
-#: crates/ui-egui/src/lang.rs:218
+#: crates/ui-egui/src/lang.rs:223
 msgctxt "category"
 msgid "Railing"
 msgstr "Zábradlí"
 
-#: crates/ui-egui/src/lang.rs:217
+#: crates/ui-egui/src/lang.rs:222
 msgctxt "category"
 msgid "Ramp"
 msgstr "Rampa"
 
-#: crates/ui-egui/src/lang.rs:211
+#: crates/ui-egui/src/lang.rs:216
 msgctxt "category"
 msgid "Roof"
 msgstr "Střecha"
 
-#: crates/ui-egui/src/lang.rs:199
+#: crates/ui-egui/src/lang.rs:204
 msgctxt "category"
 msgid "Room"
 msgstr "Místnost"
 
-#: crates/ui-egui/src/lang.rs:219
+#: crates/ui-egui/src/lang.rs:224
 msgctxt "category"
 msgid "Room Separator"
 msgstr "Oddělovač místností"
 
-#: crates/ui-egui/src/lang.rs:234
+#: crates/ui-egui/src/lang.rs:239
 msgctxt "category"
 msgid "Schedule"
 msgstr "Výkaz"
 
-#: crates/ui-egui/src/lang.rs:204
+#: crates/ui-egui/src/lang.rs:209
 msgctxt "category"
 msgid "Section"
 msgstr "Řez"
 
-#: crates/ui-egui/src/lang.rs:213
+#: crates/ui-egui/src/lang.rs:218
 msgctxt "category"
 msgid "Shaft Opening"
 msgstr "Šachtový otvor"
 
-#: crates/ui-egui/src/lang.rs:206
+#: crates/ui-egui/src/lang.rs:211
 msgctxt "category"
 msgid "Sheet"
 msgstr "Výkres"
 
-#: crates/ui-egui/src/lang.rs:233
+#: crates/ui-egui/src/lang.rs:238
 msgctxt "category"
 msgid "Spot Elevation"
 msgstr "Výšková kóta"
 
-#: crates/ui-egui/src/lang.rs:210
+#: crates/ui-egui/src/lang.rs:215
 msgctxt "category"
 msgid "Stair"
 msgstr "Schodiště"
 
-#: crates/ui-egui/src/lang.rs:223
+#: crates/ui-egui/src/lang.rs:228
 msgctxt "category"
 msgid "Strip Footing"
 msgstr "Základový pás"
 
-#: crates/ui-egui/src/lang.rs:221
+#: crates/ui-egui/src/lang.rs:226
 msgctxt "category"
 msgid "Structural Column"
 msgstr "Konstrukční sloup"
 
-#: crates/ui-egui/src/lang.rs:203
+#: crates/ui-egui/src/lang.rs:208
 msgctxt "category"
 msgid "Tag"
 msgstr "Popiska"
 
-#: crates/ui-egui/src/lang.rs:231
+#: crates/ui-egui/src/lang.rs:236
 msgctxt "category"
 msgid "Text Note"
 msgstr "Textová poznámka"
 
-#: crates/ui-egui/src/lang.rs:207
+#: crates/ui-egui/src/lang.rs:212
 msgctxt "category"
 msgid "Viewport"
 msgstr "Výřez pohledu"
 
-#: crates/ui-egui/src/lang.rs:195
+#: crates/ui-egui/src/lang.rs:200
 msgctxt "category"
 msgid "Wall"
 msgstr "Stěna"
 
-#: crates/ui-egui/src/lang.rs:197
+#: crates/ui-egui/src/lang.rs:202
 msgctxt "category"
 msgid "Window"
 msgstr "Okno"
 
-#: crates/ui-egui/src/lang.rs:227
+#: crates/ui-egui/src/lang.rs:232
 msgctxt "category"
 msgid "Wire"
 msgstr "Vodič"
 
-#: crates/ui-egui/src/lang.rs:235
+#: crates/ui-egui/src/lang.rs:240
 msgctxt "category-plural"
 msgid "3D Views"
 msgstr "3D pohledy"
 
-#: crates/ui-egui/src/lang.rs:220
+#: crates/ui-egui/src/lang.rs:225
 msgctxt "category-plural"
 msgid "Beams"
 msgstr "Průvlaky"
 
-#: crates/ui-egui/src/lang.rs:238
+#: crates/ui-egui/src/lang.rs:243
 msgctxt "category-plural"
 msgid "CAD Imports"
 msgstr "Importy CAD"
 
-#: crates/ui-egui/src/lang.rs:226
+#: crates/ui-egui/src/lang.rs:231
 msgctxt "category-plural"
 msgid "Cable Trays"
 msgstr "Kabelové žlaby"
 
-#: crates/ui-egui/src/lang.rs:228
+#: crates/ui-egui/src/lang.rs:233
 msgctxt "category-plural"
 msgid "Cables"
 msgstr "Kabely"
 
-#: crates/ui-egui/src/lang.rs:212
+#: crates/ui-egui/src/lang.rs:217
 msgctxt "category-plural"
 msgid "Ceilings"
 msgstr "Podhledy"
 
-#: crates/ui-egui/src/lang.rs:208
+#: crates/ui-egui/src/lang.rs:213
 msgctxt "category-plural"
 msgid "Columns"
 msgstr "Sloupy"
 
-#: crates/ui-egui/src/lang.rs:209
+#: crates/ui-egui/src/lang.rs:214
 msgctxt "category-plural"
 msgid "Components"
 msgstr "Komponenty"
 
-#: crates/ui-egui/src/lang.rs:225
+#: crates/ui-egui/src/lang.rs:230
 msgctxt "category-plural"
 msgid "Conduits"
 msgstr "Trubky elektroinstalace"
 
-#: crates/ui-egui/src/lang.rs:202
+#: crates/ui-egui/src/lang.rs:207
 msgctxt "category-plural"
 msgid "Dimensions"
 msgstr "Kóty"
 
-#: crates/ui-egui/src/lang.rs:196
+#: crates/ui-egui/src/lang.rs:201
 msgctxt "category-plural"
 msgid "Doors"
 msgstr "Dveře"
 
-#: crates/ui-egui/src/lang.rs:229
+#: crates/ui-egui/src/lang.rs:234
 msgctxt "category-plural"
 msgid "Down Conductors"
 msgstr "Svody hromosvodu"
 
-#: crates/ui-egui/src/lang.rs:230
+#: crates/ui-egui/src/lang.rs:235
 msgctxt "category-plural"
 msgid "Earthing Conductors"
 msgstr "Zemnicí vodiče"
 
-#: crates/ui-egui/src/lang.rs:205
+#: crates/ui-egui/src/lang.rs:210
 msgctxt "category-plural"
 msgid "Elevations"
 msgstr "Pohledy"
 
-#: crates/ui-egui/src/lang.rs:215
+#: crates/ui-egui/src/lang.rs:220
 msgctxt "category-plural"
 msgid "Filled Regions"
 msgstr "Vyplněné oblasti"
 
-#: crates/ui-egui/src/lang.rs:198
+#: crates/ui-egui/src/lang.rs:203
 msgctxt "category-plural"
 msgid "Floors"
 msgstr "Podlahy"
 
-#: crates/ui-egui/src/lang.rs:222
+#: crates/ui-egui/src/lang.rs:227
 msgctxt "category-plural"
 msgid "Footings"
 msgstr "Základové patky"
 
-#: crates/ui-egui/src/lang.rs:201
+#: crates/ui-egui/src/lang.rs:206
 msgctxt "category-plural"
 msgid "Grids"
 msgstr "Modulové osy"
 
-#: crates/ui-egui/src/lang.rs:200
+#: crates/ui-egui/src/lang.rs:205
 msgctxt "category-plural"
 msgid "Levels"
 msgstr "Podlaží"
 
-#: crates/ui-egui/src/lang.rs:232
+#: crates/ui-egui/src/lang.rs:237
 msgctxt "category-plural"
 msgid "Lines"
 msgstr "Čáry detailu"
 
-#: crates/ui-egui/src/lang.rs:236
+#: crates/ui-egui/src/lang.rs:241
 msgctxt "category-plural"
 msgid "Linked Models"
 msgstr "Připojené modely"
 
-#: crates/ui-egui/src/lang.rs:216
+#: crates/ui-egui/src/lang.rs:221
 msgctxt "category-plural"
 msgid "Mass Floors"
 msgstr "Podlaží objemu"
 
-#: crates/ui-egui/src/lang.rs:214
+#: crates/ui-egui/src/lang.rs:219
 msgctxt "category-plural"
 msgid "Masses"
 msgstr "Objemy"
 
-#: crates/ui-egui/src/lang.rs:224
+#: crates/ui-egui/src/lang.rs:229
 msgctxt "category-plural"
 msgid "Pipes"
 msgstr "Potrubí"
 
-#: crates/ui-egui/src/lang.rs:237
+#: crates/ui-egui/src/lang.rs:242
 msgctxt "category-plural"
 msgid "Point Clouds"
 msgstr "Mračna bodů"
 
-#: crates/ui-egui/src/lang.rs:218
+#: crates/ui-egui/src/lang.rs:223
 msgctxt "category-plural"
 msgid "Railings"
 msgstr "Zábradlí"
 
-#: crates/ui-egui/src/lang.rs:217
+#: crates/ui-egui/src/lang.rs:222
 msgctxt "category-plural"
 msgid "Ramps"
 msgstr "Rampy"
 
-#: crates/ui-egui/src/lang.rs:211
+#: crates/ui-egui/src/lang.rs:216
 msgctxt "category-plural"
 msgid "Roofs"
 msgstr "Střechy"
 
-#: crates/ui-egui/src/lang.rs:219
+#: crates/ui-egui/src/lang.rs:224
 msgctxt "category-plural"
 msgid "Room Separators"
 msgstr "Oddělovače místností"
 
-#: crates/ui-egui/src/lang.rs:199
+#: crates/ui-egui/src/lang.rs:204
 msgctxt "category-plural"
 msgid "Rooms"
 msgstr "Místnosti"
 
-#: crates/ui-egui/src/lang.rs:234
+#: crates/ui-egui/src/lang.rs:239
 msgctxt "category-plural"
 msgid "Schedules"
 msgstr "Výkazy"
 
-#: crates/ui-egui/src/lang.rs:204
+#: crates/ui-egui/src/lang.rs:209
 msgctxt "category-plural"
 msgid "Sections"
 msgstr "Řezy"
 
-#: crates/ui-egui/src/lang.rs:213
+#: crates/ui-egui/src/lang.rs:218
 msgctxt "category-plural"
 msgid "Shaft Openings"
 msgstr "Šachtové otvory"
 
-#: crates/ui-egui/src/lang.rs:206
+#: crates/ui-egui/src/lang.rs:211
 msgctxt "category-plural"
 msgid "Sheets"
 msgstr "Výkresy"
 
-#: crates/ui-egui/src/lang.rs:233
+#: crates/ui-egui/src/lang.rs:238
 msgctxt "category-plural"
 msgid "Spot Elevations"
 msgstr "Výškové kóty"
 
-#: crates/ui-egui/src/lang.rs:210
+#: crates/ui-egui/src/lang.rs:215
 msgctxt "category-plural"
 msgid "Stairs"
 msgstr "Schodiště"
 
-#: crates/ui-egui/src/lang.rs:223
+#: crates/ui-egui/src/lang.rs:228
 msgctxt "category-plural"
 msgid "Strip Footings"
 msgstr "Základové pásy"
 
-#: crates/ui-egui/src/lang.rs:221
+#: crates/ui-egui/src/lang.rs:226
 msgctxt "category-plural"
 msgid "Structural Columns"
 msgstr "Konstrukční sloupy"
 
-#: crates/ui-egui/src/lang.rs:203
+#: crates/ui-egui/src/lang.rs:208
 msgctxt "category-plural"
 msgid "Tags"
 msgstr "Popisky"
 
-#: crates/ui-egui/src/lang.rs:231
+#: crates/ui-egui/src/lang.rs:236
 msgctxt "category-plural"
 msgid "Text Notes"
 msgstr "Textové poznámky"
 
-#: crates/ui-egui/src/lang.rs:207
+#: crates/ui-egui/src/lang.rs:212
 msgctxt "category-plural"
 msgid "Viewports"
 msgstr "Výřezy pohledů"
 
-#: crates/ui-egui/src/lang.rs:195
+#: crates/ui-egui/src/lang.rs:200
 msgctxt "category-plural"
 msgid "Walls"
 msgstr "Stěny"
 
-#: crates/ui-egui/src/lang.rs:197
+#: crates/ui-egui/src/lang.rs:202
 msgctxt "category-plural"
 msgid "Windows"
 msgstr "Okna"
 
-#: crates/ui-egui/src/lang.rs:227
+#: crates/ui-egui/src/lang.rs:232
 msgctxt "category-plural"
 msgid "Wires"
 msgstr "Vodiče"
@@ -8766,3 +8766,66 @@ msgstr "Vodiče"
 #: crates/ui-egui/src/lib.rs:3393
 #~ msgid "Link CAD: a DXF drawing shown in the plans of a level, read again from its file on Reload and when the project opens"
 #~ msgstr "Připojit CAD: výkres DXF zobrazený v půdorysech podlaží, znovu načítaný ze souboru při opětovném načtení a při otevření projektu"
+#: crates/ui-egui/src/start.rs:308
+#~ msgid "A BIMCraft project or an IFC file."
+#~ msgstr "Projekt BIMCraft nebo soubor IFC."
+#: crates/ui-egui/src/start.rs:306
+#~ msgid "A BIMCraft project, an IFC or a Revit file."
+#~ msgstr "Projekt BIMCraft, soubor IFC nebo soubor aplikace Revit."
+#: crates/ui-egui/src/updates.rs:128
+#~ msgid "Asks to save first if there are unsaved changes, then closes BIMCraft, installs the update and starts it again."
+#~ msgstr "Při neuložených změnách se nejprve zeptá na uložení, poté ukončí BIMCraft, nainstaluje aktualizaci a znovu jej spustí."
+#: apps/bimcraft/src/startup.rs:149
+#~ msgid "BIMCraft couldn't start"
+#~ msgstr "Aplikaci BIMCraft se nepodařilo spustit"
+#: crates/ui-egui/src/editor.rs:1027
+#: crates/ui-egui/src/editor.rs:1057
+#: crates/ui-egui/src/lib.rs:3728
+#~ msgid "BIMCraft family"
+#~ msgstr "Rodina BIMCraft"
+#: crates/ui-egui/src/lib.rs:2488
+#~ msgid "BIMCraft project"
+#~ msgstr "Projekt BIMCraft"
+#: crates/ui-egui/src/links.rs:14
+#~ msgid "BIMCraft project or IFC"
+#~ msgstr "Projekt BIMCraft nebo IFC"
+#: crates/ui-egui/src/lib.rs:2618
+#~ msgid "BIMCraft project, IFC or Revit"
+#~ msgstr "Projekt BIMCraft, IFC nebo Revit"
+#: crates/ui-egui/src/start.rs:461
+#~ msgid "BIMCraft {} is available"
+#~ msgstr "BIMCraft {} je k dispozici"
+#: crates/ui-egui/src/updates.rs:94
+#~ msgid "BIMCraft {} is available. You have {}."
+#~ msgstr "BIMCraft {} je k dispozici. Máte verzi {}."
+#: crates/ui-egui/src/start.rs:471
+#~ msgid "BIMCraft {} is ready to install"
+#~ msgstr "BIMCraft {} je připraven k instalaci"
+#: crates/ui-egui/src/updates.rs:122
+#~ msgid "BIMCraft {} is ready. It will close, update and start again."
+#~ msgstr "BIMCraft {} je připraven. Aplikace se ukončí, aktualizuje a znovu spustí."
+#: crates/ui-egui/src/start.rs:481
+#~ msgid "BIMCraft {} is up to date"
+#~ msgstr "BIMCraft {} je aktuální"
+#: crates/ui-egui/src/updates.rs:45
+#~ msgid "BIMCraft {} is up to date."
+#~ msgstr "BIMCraft {} je aktuální."
+#: crates/ui-egui/src/start.rs:465
+#: crates/ui-egui/src/updates.rs:114
+#~ msgid "Downloading BIMCraft {}…"
+#~ msgstr "Stahování BIMCraft {}…"
+#: crates/ui-egui/src/updates.rs:97
+#~ msgid "Downloads and checks the update; BIMCraft then closes, updates and starts again."
+#~ msgstr "Stáhne a ověří aktualizaci; BIMCraft se poté zavře, zaktualizuje a znovu spustí."
+#: crates/ui-egui/src/updates.rs:71
+#~ msgid "Installing BIMCraft {}…"
+#~ msgstr "Instalace aplikace BIMCraft {}…"
+#: crates/ui-egui/src/lib.rs:3401
+#~ msgid "Link Model (LK): another project, a BIMCraft file or an IFC, shown in this one as a reference that can't be edited: halftone in the plans, the sections and the 3D view, and snapped to"
+#~ msgstr "Připojit model (LK): jiný projekt, soubor BIMCraft nebo IFC, zobrazený v tomto projektu jako needitovatelná reference: v polotónu v půdorysech, řezech a 3D pohledu, s možností uchopování"
+#: crates/ui-egui/src/lib.rs:3726
+#~ msgid "Load Family: a family saved as a .json file, BIMCraft's own"
+#~ msgstr "Načíst rodinu: rodina uložená ve formátu .json, nativním pro BIMCraft"
+#: crates/ui-egui/src/revit.rs:136
+#~ msgid "{}: this build of BIMCraft was made without Revit support (`--no-default-features`); build with the default `rvt` feature to read Revit files"
+#~ msgstr "{}: toto sestavení BIMCraft bylo vytvořeno bez podpory Revitu (`--no-default-features`); pro čtení souborů Revit proveďte sestavení s výchozí funkcí `rvt`"
